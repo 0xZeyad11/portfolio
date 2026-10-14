@@ -88,10 +88,25 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   <TechIcon name="Caddy" className="size-3 text-primary" /> Caddy
                 </Badge>
                 <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="JWT" className="size-3 text-primary" /> JWT / RBAC
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="PDF" className="size-3 text-primary" /> pdfmake
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="Electron" className="size-3 text-secondary-foreground" /> Electron
                 </Badge>
                 <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="React" className="size-3 text-secondary-foreground" /> React
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="TailwindCSS" className="size-3 text-secondary-foreground" /> Tailwind
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="Vite" className="size-3 text-secondary-foreground" /> Vite
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="Git" className="size-3 text-secondary-foreground" /> Git
                 </Badge>
               </div>
 

@@ -123,7 +123,19 @@ export const OverviewSection: React.FC = () => {
                       <TechIcon name="PostgreSQL" className="size-3" /> PostgreSQL
                     </Badge>
                     <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                      <TechIcon name="TypeORM" className="size-3" /> TypeORM
+                    </Badge>
+                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="Docker" className="size-3" /> Docker
+                    </Badge>
+                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                      <TechIcon name="Python" className="size-3" /> Python
+                    </Badge>
+                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                      <TechIcon name="Electron" className="size-3" /> Electron
+                    </Badge>
+                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                      <TechIcon name="Caddy" className="size-3" /> Caddy
                     </Badge>
                     <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="React" className="size-3" /> React
