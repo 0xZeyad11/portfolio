@@ -1,12 +1,12 @@
 import React from "react";
 import profilePic from "@/assets/profile-pic.png";
+import { TechIcon } from "@/components/common/TechIcon";
 import { SkillsMatrix } from "./SkillsMatrix";
 import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
   CardTitle,
-  CardDescription,
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
@@ -108,9 +108,28 @@ export const OverviewSection: React.FC = () => {
                   </Badge>
                 </div>
 
-                <CardDescription className="font-title-md text-sm sm:text-base text-secondary-foreground font-mono mb-4">
-                  {PROFILE_INFO.role} // NestJS • TypeScript • PostgreSQL • Docker • React
-                </CardDescription>
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <span className="font-title-md text-sm sm:text-base text-secondary-foreground font-mono font-bold">
+                    {PROFILE_INFO.role} //
+                  </span>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                      <TechIcon name="NestJS" className="size-3" /> NestJS
+                    </Badge>
+                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                      <TechIcon name="TypeScript" className="size-3" /> TypeScript
+                    </Badge>
+                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                      <TechIcon name="PostgreSQL" className="size-3" /> PostgreSQL
+                    </Badge>
+                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                      <TechIcon name="Docker" className="size-3" /> Docker
+                    </Badge>
+                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                      <TechIcon name="React" className="size-3" /> React
+                    </Badge>
+                  </div>
+                </div>
 
                 <p className="font-body-lg text-body-md sm:text-body-lg text-muted-foreground leading-relaxed">
                   {PROFILE_INFO.bio}

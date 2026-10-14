@@ -4,6 +4,7 @@ import { Card, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Terminal, ExternalLink } from "lucide-react";
+import { TechIcon } from "@/components/common/TechIcon";
 import type { Project } from "@/types/portfolio";
 
 interface ProjectCardProps {
@@ -74,8 +75,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               <Badge
                 key={tech}
                 variant="outline"
-                className="font-mono text-[10px] sm:text-xs bg-surface-container-highest/60 text-foreground border-border px-2.5 py-0.5"
+                className="font-mono text-[10px] sm:text-xs bg-surface-container-highest/60 text-foreground border-border px-2.5 py-0.5 gap-1.5"
               >
+                <TechIcon name={tech} className="size-3" />
                 {tech}
               </Badge>
             ))}
