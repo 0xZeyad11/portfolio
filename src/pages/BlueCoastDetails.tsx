@@ -7,6 +7,7 @@ import { ZoomableImage } from "@/components/ZoomableImage";
 
 // Showcase images
 import bcDashboard from "@/assets/bluecoast showcase/02_dashboard_overview.png";
+import bcBatches from "@/assets/bluecoast showcase/08_production_batches.png";
 import bcHierarchy from "@/assets/bluecoast showcase/07_compound_details_muruj.png";
 import bcCutplan from "@/assets/bluecoast showcase/09_batch_cutplan_details.png";
 import bcCalculator from "@/assets/bluecoast showcase/18_window_calculator.png";
@@ -120,8 +121,31 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             </p>
           </div>
 
+          {/* Project Overview Showcase Image */}
+          <Card className="bg-surface-container border-border overflow-hidden clip-chamfer shadow-2xl">
+            <div className="aspect-[16/9] sm:aspect-[21/9] bg-black/60 relative overflow-hidden group">
+              <ZoomableImage
+                src={bcDashboard}
+                alt="Blue Coast OS Production Management Overview"
+                caption="BLUE COAST OS: INDUSTRIAL PRODUCTION MANAGEMENT SUITE & OVERVIEW DASHBOARD"
+                badgeLabel="PROJECT OVERVIEW"
+                className="w-full h-full object-cover object-top"
+                wrapperClassName="w-full h-full"
+              />
+            </div>
+            <div className="p-3 bg-surface-container-low/80 border-t border-border flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-muted-foreground">
+              <span className="flex items-center gap-2 text-primary font-bold">
+                <span className="size-2 rounded-full bg-primary animate-pulse" />
+                SYSTEM RUNTIME // PRODUCTION DASHBOARD OVERVIEW
+              </span>
+              <span className="text-muted-foreground font-mono text-[11px]">
+                15+ NESTJS BACKEND DOMAINS • 7,310.6M LINEAR METERS TRACKED
+              </span>
+            </div>
+          </Card>
+
           {/* Quick Metrics HUD */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-2">
             <Card className="bg-surface-container border-border clip-chamfer p-4">
               <span className="font-mono text-[11px] text-muted-foreground uppercase block">BACKEND DOMAINS</span>
               <span className="font-headline-md text-2xl font-bold text-primary font-mono mt-1 block">15+ Modules</span>
@@ -175,9 +199,9 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             <Card className="bg-surface-container border-border overflow-hidden clip-chamfer shadow-xl">
               <div className="aspect-video bg-black/60 relative overflow-hidden">
                 <ZoomableImage
-                  src={bcDashboard}
-                  alt="Blue Coast Executive Dashboard"
-                  caption="FIGURE 1.0: EXECUTIVE PRODUCTION ANALYTICS DASHBOARD"
+                  src={bcBatches}
+                  alt="Blue Coast Batch Production & Management"
+                  caption="FIGURE 1.0: BATCH PRODUCTION SCHEDULING & FABRICATION PROGRESS"
                   badgeLabel="FIGURE 1.0"
                   className="w-full h-full object-cover"
                   wrapperClassName="w-full h-full"
@@ -185,11 +209,10 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
               </div>
               <CardContent className="p-4 bg-surface-container-low/70 border-t border-border">
                 <span className="font-mono text-xs font-bold text-primary block">
-                  FIGURE 1.0: EXECUTIVE PRODUCTION ANALYTICS DASHBOARD
+                  FIGURE 1.0: BATCH PRODUCTION SCHEDULING & FABRICATION PROGRESS
                 </span>
                 <p className="font-body-sm text-xs text-muted-foreground mt-1">
-                  Surfacing real-time extrusion linear meters consumed, active compound statistics, and historical market
-                  price trends for aluminum and flat glass.
+                  Tracking active manufacturing cut plan batches across compounds, units, and real-time operator progress.
                 </p>
               </CardContent>
             </Card>

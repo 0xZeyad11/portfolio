@@ -8,7 +8,9 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Activity } from "lucide-react";
+import { Activity, Maximize2 } from "lucide-react";
+import { ZoomableImage } from "@/components/ZoomableImage";
+import bcDashboard from "@/assets/bluecoast showcase/02_dashboard_overview.png";
 
 interface ExperienceSectionProps {
   onNavigateToSubpage: () => void;
@@ -60,51 +62,89 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
         </CardHeader>
 
         <CardContent className="pt-5">
-          <ul className="text-muted-foreground font-body-sm space-y-2.5 list-disc pl-5 marker:text-secondary-foreground">
-            <li>
-              Architected a modular NestJS backend with 15+ domain modules including compounds, buildings,
-              floors, apartments, windows, cut plans, glass batches, accessories, pricing, invoices, reports,
-              weights, PDFs, images, and system configuration.
-            </li>
-            <li>
-              Engineered a builder-pattern window calculation engine supporting 4 aluminum profile systems (PS
-              9600, PS 6600, PS 4800, Sonata 45) with configurable sub-types and options.
-            </li>
-            <li>
-              Developed a Best Decreasing Fit bin-packing algorithm for generating optimized aluminum cut plans that
-              minimize material waste, factoring in blade kerf and 45-degree cutting angle adjustments.
-            </li>
-            <li>
-              Built a pricing engine that computes per-square-meter window pricing by aggregating aluminum weight,
-              glass area, and accessories costs with configurable waste percentages, plus fabrication,
-              installation, transportation, and profit margin calculations.
-            </li>
-            <li>
-              Designed an invoicing module with automatic total calculation from window specifications via
-              integration with the pricing engine, supporting invoice lifecycle management.
-            </li>
-            <li>
-              Created a 3-tier reporting system (system-wide, compound-level, building-level) with aggregated
-              analytics for material consumption, profile usage efficiency, accessory usage, unit counts, and
-              financial summaries.
-            </li>
-            <li>
-              Generated Arabic RTL PDF reports using pdfmake with Cairo font support, exporting window
-              measurement tables grouped by profile system.
-            </li>
-            <li>
-              Implemented JWT-based authentication with access and refresh token rotation, bcrypt password hashing,
-              and role-based authorization (RBAC) enforced globally via NestJS guards.
-            </li>
-            <li>
-              Managed database schema evolution with TypeORM migrations and seeded reference data for accessories
-              and profile weights via dedicated seed scripts.
-            </li>
-            <li>
-              Containerized the full production stack (NestJS backend, PostgreSQL database, Caddy reverse proxy)
-              using Docker Compose for both development and production environments.
-            </li>
-          </ul>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            <div className="lg:col-span-7">
+              <ul className="text-muted-foreground font-body-sm space-y-2.5 list-disc pl-5 marker:text-secondary-foreground">
+                <li>
+                  Architected a modular NestJS backend with 15+ domain modules including compounds, buildings,
+                  floors, apartments, windows, cut plans, glass batches, accessories, pricing, invoices, reports,
+                  weights, PDFs, images, and system configuration.
+                </li>
+                <li>
+                  Engineered a builder-pattern window calculation engine supporting 4 aluminum profile systems (PS
+                  9600, PS 6600, PS 4800, Sonata 45) with configurable sub-types and options.
+                </li>
+                <li>
+                  Developed a Best Decreasing Fit bin-packing algorithm for generating optimized aluminum cut plans that
+                  minimize material waste, factoring in blade kerf and 45-degree cutting angle adjustments.
+                </li>
+                <li>
+                  Built a pricing engine that computes per-square-meter window pricing by aggregating aluminum weight,
+                  glass area, and accessories costs with configurable waste percentages, plus fabrication,
+                  installation, transportation, and profit margin calculations.
+                </li>
+                <li>
+                  Designed an invoicing module with automatic total calculation from window specifications via
+                  integration with the pricing engine, supporting invoice lifecycle management.
+                </li>
+                <li>
+                  Created a 3-tier reporting system (system-wide, compound-level, building-level) with aggregated
+                  analytics for material consumption, profile usage efficiency, accessory usage, unit counts, and
+                  financial summaries.
+                </li>
+                <li>
+                  Generated Arabic RTL PDF reports using pdfmake with Cairo font support, exporting window
+                  measurement tables grouped by profile system.
+                </li>
+                <li>
+                  Implemented JWT-based authentication with access and refresh token rotation, bcrypt password hashing,
+                  and role-based authorization (RBAC) enforced globally via NestJS guards.
+                </li>
+                <li>
+                  Managed database schema evolution with TypeORM migrations and seeded reference data for accessories
+                  and profile weights via dedicated seed scripts.
+                </li>
+                <li>
+                  Containerized the full production stack (NestJS backend, PostgreSQL database, Caddy reverse proxy)
+                  using Docker Compose for both development and production environments.
+                </li>
+              </ul>
+            </div>
+
+            <div className="lg:col-span-5 flex flex-col gap-3">
+              <Card className="bg-surface-container-low border-border overflow-hidden clip-chamfer shadow-lg">
+                <div className="aspect-video bg-black/60 relative overflow-hidden group">
+                  <ZoomableImage
+                    src={bcDashboard}
+                    alt="Blue Coast OS Production Dashboard Overview"
+                    caption="BLUE COAST OS // PRODUCTION RUNTIME DASHBOARD OVERVIEW"
+                    badgeLabel="SYSTEM OVERVIEW"
+                    className="w-full h-full object-cover object-top"
+                    wrapperClassName="w-full h-full"
+                  />
+                </div>
+                <div className="p-3 bg-surface-container-lowest/80 border-t border-border flex items-center justify-between text-xs font-mono text-muted-foreground">
+                  <span className="text-primary font-bold text-[11px] flex items-center gap-1.5">
+                    <span className="size-1.5 rounded-full bg-primary animate-pulse" />
+                    BLUE COAST OS
+                  </span>
+                  <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+                    <Maximize2 className="size-3 text-secondary-foreground" />
+                    CLICK TO EXPAND
+                  </span>
+                </div>
+              </Card>
+
+              <div className="p-3 bg-surface-container-low/50 border border-dashed border-border rounded clip-chamfer">
+                <span className="font-mono text-[11px] text-secondary-foreground uppercase font-bold block">
+                  HIGHLIGHTED SUBSYSTEMS
+                </span>
+                <p className="font-body-sm text-xs text-muted-foreground mt-1">
+                  15+ production modules, dynamic kerf cut optimizer, live market material pricing, and Arabic RTL invoices.
+                </p>
+              </div>
+            </div>
+          </div>
 
           {/* Subpage Dossier Link */}
           <div className="mt-6 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
