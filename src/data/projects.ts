@@ -1,6 +1,6 @@
 import type { Project } from "@/types/portfolio";
 import backendApiPic from "@/assets/Backend-API.png";
-import cliProjectPic from "@/assets/CLI-PROJECT.png";
+import termadoroPic from "@/assets/termadoro.png";
 
 export const PROJECTS_DATA: Project[] = [
   {
@@ -40,7 +40,7 @@ export const PROJECTS_DATA: Project[] = [
     category: "DEVELOPER PRODUCTIVITY",
     description:
       "Developed and published a cross-platform CLI productivity tool on npm for Pomodoro-based time tracking with tagging and session analytics. Designed interactive terminal workflows with real-time controls and desktop notifications.",
-    image: cliProjectPic,
+    image: termadoroPic,
     technologies: ["NPM", "CLI", "Terminal", "Node.js", "TypeScript"],
     status: "PUBLISHED",
     statusVariant: "destructive",
