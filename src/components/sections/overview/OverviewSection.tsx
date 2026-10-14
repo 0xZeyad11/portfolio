@@ -70,7 +70,7 @@ export const OverviewSection: React.FC = () => {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6 lg:gap-8">
               {/* Prominent Profile Picture Frame */}
               <div className="relative group shrink-0">
-                <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-none border-2 border-primary/40 bg-surface-container-lowest overflow-hidden shadow-xl relative p-0.5 group-hover:border-primary transition-colors">
+                <div className="w-full max-w-[300px] sm:w-80 md:w-96 lg:w-[380px] xl:w-[440px] aspect-[4/5] rounded-none border-2 border-primary/40 bg-surface-container-lowest overflow-hidden shadow-xl relative p-0.5 group-hover:border-primary transition-colors">
                   <ZoomableImage
                     src={profilePic}
                     alt={`${PROFILE_INFO.name} Profile`}
