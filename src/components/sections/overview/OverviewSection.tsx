@@ -66,10 +66,10 @@ export const OverviewSection: React.FC = () => {
             </div>
 
             {/* Compact Avatar + Identity Section */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
-              {/* Compact Profile Picture with HUD frame */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+              {/* Profile Picture with HUD frame */}
               <div className="relative group shrink-0">
-                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-none border-2 border-primary/40 bg-surface-container-lowest overflow-hidden shadow-lg relative p-0.5 group-hover:border-primary transition-colors">
+                <div className="w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 rounded-none border-2 border-primary/40 bg-surface-container-lowest overflow-hidden shadow-lg relative p-0.5 group-hover:border-primary transition-colors">
                   <ZoomableImage
                     src={profilePic}
                     alt={`${PROFILE_INFO.name} Profile`}
