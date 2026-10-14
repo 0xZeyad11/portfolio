@@ -3,14 +3,6 @@ import profilePic from "./assets/profile-pic.png";
 import kitchenlyPic from "./assets/kitchenly.jpg";
 import restaurantPic from "./assets/restaurant.jpg";
 
-// Blue Coast Showcase assets
-import bcDashboard from "./assets/bluecoast showcase/02_dashboard_overview.png";
-import bcBatches from "./assets/bluecoast showcase/08_production_batches.png";
-import bcCutplan from "./assets/bluecoast showcase/09_batch_cutplan_details.png";
-import bcProfiles from "./assets/bluecoast showcase/11_profiles_catalog.png";
-import bcCalculator from "./assets/bluecoast showcase/18_window_calculator.png";
-import bcInvoices from "./assets/bluecoast showcase/17_invoices_list.png";
-
 // Shadcn UI Components
 import { Button } from "@/components/ui/button";
 import {
@@ -25,14 +17,6 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
 import {
   Tooltip,
   TooltipContent,
@@ -50,7 +34,6 @@ import {
   Mail,
   FileDown,
   Search,
-  Maximize2,
   CheckCircle2,
   Copy,
   FolderGit2,
@@ -131,39 +114,6 @@ const PROJECTS_DATA: Project[] = [
     linkText: "NPMJS.COM",
     linkUrl: "https://www.npmjs.com/package/termadoro",
     linkVariant: "destructive",
-  },
-];
-
-const BLUE_COAST_GALLERY = [
-  {
-    title: "Executive Production & Analytics Dashboard",
-    desc: "Real-time KPIs for extrusion consumption, scrap tracking, and dual aluminum/glass price trend monitoring.",
-    img: bcDashboard,
-  },
-  {
-    title: "Fabrication Batches & Cut Plan Optimization",
-    desc: "Best Decreasing Fit bin-packing algorithm minimizing bar scrap with blade kerf & angle offsets.",
-    img: bcCutplan,
-  },
-  {
-    title: "Batch Execution & Stage Progress",
-    desc: "Monitor fabrication stages from cutting and assembly to glazing and quality control.",
-    img: bcBatches,
-  },
-  {
-    title: "Extrusion Profiles Catalog & Systems Master Data",
-    desc: "Architecture profiles catalog supporting PS 9600, PS 6600, PS 4800, and Sonata 45 systems.",
-    img: bcProfiles,
-  },
-  {
-    title: "Parametric Window Cost & Quotation Calculator",
-    desc: "Per-m² cost engine calculating aluminum weights, glass area, accessories, and profit margin.",
-    img: bcCalculator,
-  },
-  {
-    title: "Invoices Ledger & Billing Management",
-    desc: "Dynamic invoice generation with customer tracking, Arabic RTL PDF exports, and payment status.",
-    img: bcInvoices,
   },
 ];
 
@@ -670,70 +620,6 @@ function App() {
                   </li>
                 </ul>
               </CardContent>
-
-              {/* Interactive Blue Coast Showcase Dialog */}
-              <CardFooter className="pt-4 border-t border-border bg-surface-container-low/50 flex flex-wrap items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 bg-secondary-foreground rounded-full animate-ping"></span>
-                  <span className="font-mono text-xs text-muted-foreground">
-                    SHOWCASE DOSSIER: 6 INTERACTIVE SYSTEM SCREENS READY
-                  </span>
-                </div>
-
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button
-                      variant="secondary"
-                      className="font-mono font-bold text-xs uppercase tracking-wider clip-chamfer gap-2 h-9 px-4 border border-secondary-foreground/40 text-secondary-foreground hover:bg-secondary-foreground hover:text-background cursor-pointer"
-                    >
-                      <Maximize2 className="size-3.5" />
-                      [ INSPECT BLUE COAST ERP SHOWCASE ]
-                    </Button>
-                  </DialogTrigger>
-
-                  <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto bg-surface-container border-border clip-chamfer p-6 text-foreground">
-                    <DialogHeader>
-                      <div className="flex items-center gap-2">
-                        <Badge variant="default" className="font-mono uppercase font-bold text-xs">
-                          BLUE COAST OS
-                        </Badge>
-                        <Badge variant="outline" className="font-mono text-secondary-foreground border-border text-xs">
-                          PRODUCTION & FABRICATION MANAGEMENT
-                        </Badge>
-                      </div>
-                      <DialogTitle className="font-headline-md text-headline-sm uppercase font-bold text-primary mt-2">
-                        Blue Coast OS — Industrial ERP Suite Showcase
-                      </DialogTitle>
-                      <DialogDescription className="text-muted-foreground font-body-sm">
-                        High-precision desktop application built for industrial production, cut plan optimization,
-                        material inventory, and commercial quoting of aluminum windows and doors.
-                      </DialogDescription>
-                    </DialogHeader>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-                      {BLUE_COAST_GALLERY.map((item, idx) => (
-                        <Card key={idx} className="bg-surface-container-low border-border overflow-hidden">
-                          <div className="aspect-video bg-black/60 relative overflow-hidden group">
-                            <img
-                              src={item.img}
-                              alt={item.title}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
-                          <CardContent className="p-3">
-                            <span className="font-headline-sm text-sm font-bold text-primary uppercase block">
-                              {item.title}
-                            </span>
-                            <p className="font-body-sm text-xs text-muted-foreground mt-1">
-                              {item.desc}
-                            </p>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </CardFooter>
             </Card>
           </section>
 
