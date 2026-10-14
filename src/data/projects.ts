@@ -9,7 +9,7 @@ export const PROJECTS_DATA: Project[] = [
     title: "PROJECT // KITCHENLY",
     category: "FOOD ORDERING & REALTIME TRACKING",
     description:
-      "Modular REST API with 28+ endpoints for users, menus, orders, and payments. Implemented JWT authentication and RBAC. Integrated Stripe payment processing. Built real-time order tracking using WebSockets (Socket.io). Developed geospatial search using PostGIS. Designed normalized PostgreSQL schema with Prisma ORM. Generated OpenAPI (Swagger) specs.",
+      "A robust Node.js/Express backend API for Kitchenly - a mobile application that connects home chefs with customers, enabling anyone to start their cooking business from home and order high-quality homemade food from local chefs.",
     image: backendApiPic,
     technologies: ["Express.js", "PostgreSQL", "Prisma", "PostGIS", "WebSockets", "Stripe"],
     status: "STATUS: SOURCE_AVAILABLE",
