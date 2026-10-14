@@ -8,7 +8,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Activity, Maximize2 } from "lucide-react";
+import { Activity, Maximize2, Cpu, Database, Server, FileText } from "lucide-react";
 import { ZoomableImage } from "@/components/ZoomableImage";
 import bcDashboard from "@/assets/bluecoast showcase/02_dashboard_overview.png";
 
@@ -29,10 +29,12 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
       </div>
 
       <Card className="bg-surface-container border-l-4 border-l-primary border-t border-r border-b border-border shadow-xl clip-chamfer">
-        <CardHeader className="bg-surface-container-low/60 border-b border-border pb-3">
-          <div className="flex flex-wrap justify-between items-start gap-2">
-            <div className="flex flex-col">
-              <div className="flex items-center gap-2">
+        {/* Top Split Section: Details + Showcase Image */}
+        <CardHeader className="bg-surface-container-low/60 border-b border-border pb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            {/* Left: Role, Description & Metrics */}
+            <div className="lg:col-span-7 xl:col-span-7 space-y-4">
+              <div className="flex flex-wrap items-center gap-2">
                 <Badge
                   variant="secondary"
                   className="font-mono text-secondary-foreground font-bold tracking-widest uppercase"
@@ -42,29 +44,100 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 <Badge variant="outline" className="font-mono text-muted-foreground border-border text-xs">
                   FREELANCE
                 </Badge>
+                <Badge
+                  variant="outline"
+                  className="font-mono text-secondary-foreground font-bold bg-surface-container-low px-2.5 py-0.5 border-border text-xs"
+                >
+                  JAN 2026 - PRESENT
+                </Badge>
               </div>
-              <CardTitle className="font-headline-sm text-headline-sm font-bold text-on-surface uppercase mt-2">
-                FULLSTACK ENGINEER (FREELANCE)
-              </CardTitle>
+
+              <div>
+                <CardTitle className="font-headline-sm text-2xl font-bold text-on-surface uppercase tracking-tight">
+                  FULLSTACK ENGINEER (FREELANCE)
+                </CardTitle>
+                <CardDescription className="font-body-md text-sm sm:text-base text-muted-foreground mt-2 leading-relaxed">
+                  Designed and built the complete backend for a production desktop ERP suite engineered for industrial aluminum
+                  and glass fabricators. Orchestrates end-to-end manufacturing lifecycles, cut plan scrap optimization, and
+                  automated quotation calculation. Built with NestJS, TypeScript, PostgreSQL, and Docker.
+                </CardDescription>
+              </div>
+
+              {/* Subsystem Telemetry Badges - 4 High Density Metric HUD cards */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
+                <div className="p-2.5 bg-surface-container/80 border border-border clip-chamfer">
+                  <span className="font-mono text-[10px] text-muted-foreground uppercase flex items-center gap-1">
+                    <Server className="size-3 text-primary" /> BACKEND
+                  </span>
+                  <span className="font-mono font-bold text-xs text-primary block mt-0.5">15+ Modules</span>
+                  <span className="font-mono text-[10px] text-muted-foreground block">NestJS + TypeORM</span>
+                </div>
+
+                <div className="p-2.5 bg-surface-container/80 border border-border clip-chamfer">
+                  <span className="font-mono text-[10px] text-muted-foreground uppercase flex items-center gap-1">
+                    <Cpu className="size-3 text-secondary-foreground" /> OPTIMIZER
+                  </span>
+                  <span className="font-mono font-bold text-xs text-secondary-foreground block mt-0.5">Bin-Packing</span>
+                  <span className="font-mono text-[10px] text-muted-foreground block">Scrap Reduction</span>
+                </div>
+
+                <div className="p-2.5 bg-surface-container/80 border border-border clip-chamfer">
+                  <span className="font-mono text-[10px] text-muted-foreground uppercase flex items-center gap-1">
+                    <Database className="size-3 text-primary" /> DATABASE
+                  </span>
+                  <span className="font-mono font-bold text-xs text-primary block mt-0.5">PostgreSQL</span>
+                  <span className="font-mono text-[10px] text-muted-foreground block">Docker + Caddy</span>
+                </div>
+
+                <div className="p-2.5 bg-surface-container/80 border border-border clip-chamfer">
+                  <span className="font-mono text-[10px] text-muted-foreground uppercase flex items-center gap-1">
+                    <Activity className="size-3 text-secondary-foreground" /> COVERAGE
+                  </span>
+                  <span className="font-mono font-bold text-xs text-secondary-foreground block mt-0.5">4 Systems</span>
+                  <span className="font-mono text-[10px] text-muted-foreground block">PS & Sonata</span>
+                </div>
+              </div>
             </div>
-            <Badge
-              variant="outline"
-              className="font-mono text-secondary-foreground font-bold bg-surface-container-low px-3 py-1 border-border"
-            >
-              JAN 2026 - PRESENT
-            </Badge>
+
+            {/* Right: Interactive Showcase Preview Image */}
+            <div className="lg:col-span-5 xl:col-span-5 flex flex-col justify-between">
+              <Card className="bg-surface-container-low border-border overflow-hidden clip-chamfer shadow-xl group">
+                <div className="aspect-[16/10] max-h-[300px] bg-black/60 relative overflow-hidden">
+                  <ZoomableImage
+                    src={bcDashboard}
+                    alt="Blue Coast OS Production Dashboard Overview"
+                    caption="BLUE COAST OS // PRODUCTION RUNTIME DASHBOARD OVERVIEW"
+                    badgeLabel="SYSTEM OVERVIEW"
+                    className="w-full h-full object-cover object-top"
+                    wrapperClassName="w-full h-full"
+                  />
+                </div>
+                <div className="p-2.5 bg-surface-container-lowest/90 border-t border-border flex items-center justify-between text-xs font-mono text-muted-foreground">
+                  <span className="text-primary font-bold text-[11px] flex items-center gap-1.5">
+                    <span className="size-1.5 rounded-full bg-primary animate-pulse" />
+                    BLUE COAST OS // EXECUTIVE DASHBOARD
+                  </span>
+                  <span className="text-[10px] text-muted-foreground flex items-center gap-1">
+                    <Maximize2 className="size-3 text-secondary-foreground" />
+                    CLICK TO EXPAND
+                  </span>
+                </div>
+              </Card>
+            </div>
           </div>
-          <CardDescription className="font-body-md text-body-md text-muted-foreground mt-2">
-            Designed and built the backend for a production desktop ERP system used by an aluminum and glass
-            fabrication company. The system manages the full lifecycle of construction projects. Built with
-            NestJS, TypeScript, PostgreSQL, and Docker.
-          </CardDescription>
         </CardHeader>
 
-        <CardContent className="pt-5">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <div className="lg:col-span-7">
-              <ul className="text-muted-foreground font-body-sm space-y-2.5 list-disc pl-5 marker:text-secondary-foreground">
+        {/* Bottom Section: Balanced 2-Column Architecture Highlights */}
+        <CardContent className="pt-6">
+          <div className="space-y-3">
+            <span className="font-mono text-xs text-secondary-foreground uppercase font-bold tracking-wider flex items-center gap-2">
+              <FileText className="size-3.5 text-secondary-foreground" />
+              // ARCHITECTURAL ACHIEVEMENTS & DOMAIN HIGHLIGHTS
+            </span>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 pt-1">
+              {/* Column 1 */}
+              <ul className="text-muted-foreground font-body-sm space-y-3 list-disc pl-5 marker:text-secondary-foreground">
                 <li>
                   Architected a modular NestJS backend with 15+ domain modules including compounds, buildings,
                   floors, apartments, windows, cut plans, glass batches, accessories, pricing, invoices, reports,
@@ -87,6 +160,10 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   Designed an invoicing module with automatic total calculation from window specifications via
                   integration with the pricing engine, supporting invoice lifecycle management.
                 </li>
+              </ul>
+
+              {/* Column 2 */}
+              <ul className="text-muted-foreground font-body-sm space-y-3 list-disc pl-5 marker:text-primary">
                 <li>
                   Created a 3-tier reporting system (system-wide, compound-level, building-level) with aggregated
                   analytics for material consumption, profile usage efficiency, accessory usage, unit counts, and
@@ -110,48 +187,14 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 </li>
               </ul>
             </div>
-
-            <div className="lg:col-span-5 flex flex-col gap-3">
-              <Card className="bg-surface-container-low border-border overflow-hidden clip-chamfer shadow-lg">
-                <div className="aspect-video bg-black/60 relative overflow-hidden group">
-                  <ZoomableImage
-                    src={bcDashboard}
-                    alt="Blue Coast OS Production Dashboard Overview"
-                    caption="BLUE COAST OS // PRODUCTION RUNTIME DASHBOARD OVERVIEW"
-                    badgeLabel="SYSTEM OVERVIEW"
-                    className="w-full h-full object-cover object-top"
-                    wrapperClassName="w-full h-full"
-                  />
-                </div>
-                <div className="p-3 bg-surface-container-lowest/80 border-t border-border flex items-center justify-between text-xs font-mono text-muted-foreground">
-                  <span className="text-primary font-bold text-[11px] flex items-center gap-1.5">
-                    <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-                    BLUE COAST OS
-                  </span>
-                  <span className="text-[10px] text-muted-foreground flex items-center gap-1">
-                    <Maximize2 className="size-3 text-secondary-foreground" />
-                    CLICK TO EXPAND
-                  </span>
-                </div>
-              </Card>
-
-              <div className="p-3 bg-surface-container-low/50 border border-dashed border-border rounded clip-chamfer">
-                <span className="font-mono text-[11px] text-secondary-foreground uppercase font-bold block">
-                  HIGHLIGHTED SUBSYSTEMS
-                </span>
-                <p className="font-body-sm text-xs text-muted-foreground mt-1">
-                  15+ production modules, dynamic kerf cut optimizer, live market material pricing, and Arabic RTL invoices.
-                </p>
-              </div>
-            </div>
           </div>
 
-          {/* Subpage Dossier Link */}
-          <div className="mt-6 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
+          {/* Subpage Dossier Link Footer */}
+          <div className="mt-8 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-secondary-foreground rounded-full"></span>
+              <span className="w-2 h-2 bg-secondary-foreground rounded-full animate-pulse"></span>
               <span className="font-mono text-xs text-muted-foreground">
-                ARCHITECTURAL CASE STUDY & SYSTEM SCREENSHOTS
+                ARCHITECTURAL CASE STUDY & 6 INTERACTIVE SYSTEM SCREENS READY
               </span>
             </div>
 

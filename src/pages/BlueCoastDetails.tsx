@@ -91,7 +91,7 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
       </header>
 
       {/* Main Container */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 space-y-12">
         {/* Hero Section */}
         <section className="space-y-6">
           <div className="flex flex-wrap items-center gap-2">
@@ -193,6 +193,20 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
               <li>Discrepancies in per-m² price calculations due to volatile raw material market rates.</li>
               <li>Lag between window specifications and commercial customer invoices.</li>
             </ul>
+
+            {/* Key Bottlenecks Solved Mini HUD */}
+            <div className="p-3.5 bg-surface-container border border-border clip-chamfer grid grid-cols-2 gap-3 mt-4">
+              <div>
+                <span className="font-mono text-[10px] text-muted-foreground uppercase block">SCRAP REDUCTION</span>
+                <span className="font-mono text-base font-bold text-primary block mt-0.5">~20% → &lt;6%</span>
+                <span className="font-mono text-[10px] text-muted-foreground block">Algorithmic bar packing</span>
+              </div>
+              <div>
+                <span className="font-mono text-[10px] text-muted-foreground uppercase block">KERF TOLERANCE</span>
+                <span className="font-mono text-base font-bold text-secondary-foreground block mt-0.5">3.0mm Exact</span>
+                <span className="font-mono text-[10px] text-muted-foreground block">Miter 45° deduction</span>
+              </div>
+            </div>
           </div>
 
           <div className="lg:col-span-7">
@@ -235,7 +249,7 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-7">
               <Card className="bg-surface-container border-border overflow-hidden clip-chamfer shadow-xl">
                 <div className="aspect-video bg-black/60 relative overflow-hidden">
@@ -261,7 +275,7 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             </div>
 
             <div className="lg:col-span-5 space-y-4">
-              <div className="bg-surface-container p-4 border border-border space-y-2">
+              <div className="bg-surface-container p-4 border border-border clip-chamfer space-y-2">
                 <span className="font-mono text-xs font-bold text-primary uppercase">ALGORITHM HIGHLIGHTS:</span>
                 <ul className="text-xs text-muted-foreground space-y-2 list-disc pl-4 marker:text-secondary-foreground">
                   <li>
@@ -277,6 +291,28 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
                     <strong className="text-foreground">Output Visuals:</strong> Generates workshop cutting sheets that saw operators follow directly on the fabrication floor.
                   </li>
                 </ul>
+              </div>
+
+              {/* Optimization Math & Yield Metrics HUD */}
+              <div className="bg-surface-container-low p-4 border border-border clip-chamfer space-y-2.5">
+                <span className="font-mono text-xs font-bold text-secondary-foreground uppercase block">
+                  OPTIMIZATION BENCHMARK & HEURISTICS:
+                </span>
+                <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+                  <div className="bg-surface-container/80 p-2.5 border border-border/60">
+                    <span className="text-[10px] text-muted-foreground block">YIELD EFFICIENCY</span>
+                    <span className="text-base font-bold text-primary block mt-0.5">94.2%</span>
+                    <span className="text-[9px] text-muted-foreground block">Blue Coast Engine</span>
+                  </div>
+                  <div className="bg-surface-container/80 p-2.5 border border-border/60">
+                    <span className="text-[10px] text-muted-foreground block">INDUSTRY MANUAL</span>
+                    <span className="text-base font-bold text-muted-foreground block mt-0.5">~78.0%</span>
+                    <span className="text-[9px] text-muted-foreground block">Traditional Spreadsheets</span>
+                  </div>
+                </div>
+                <div className="text-[11px] font-mono text-muted-foreground leading-relaxed pt-1 border-t border-border/50">
+                  Formulation: 1D First-Fit Decreasing (FFD) heuristics with discrete piece sorting across entire building batches against 6,500mm standard extrusion stock.
+                </div>
               </div>
             </div>
           </div>
@@ -298,13 +334,13 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-5 space-y-4">
               <p className="text-muted-foreground text-sm leading-relaxed">
                 Fabricators need instantaneous pricing when bidding on major commercial compounds. The calculation engine
                 uses a builder pattern to dynamically derive the manufacturing cost and selling price per square meter:
               </p>
-              <div className="bg-surface-container p-4 border border-border space-y-2">
+              <div className="bg-surface-container p-4 border border-border clip-chamfer space-y-2">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="size-4 text-primary shrink-0" />
                   <span className="text-xs text-muted-foreground">
@@ -322,6 +358,26 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
                   <span className="text-xs text-muted-foreground">
                     <strong className="text-foreground">Overhead & Profit:</strong> Configurable percentage markups for transportation, installation, scrap allowance, and operating margin.
                   </span>
+                </div>
+              </div>
+
+              {/* Parametric Cost Derivation HUD */}
+              <div className="bg-surface-container-low p-3.5 border border-border clip-chamfer space-y-2 font-mono">
+                <span className="text-[11px] font-bold text-secondary-foreground uppercase block">
+                  PARAMETRIC COST DERIVATION:
+                </span>
+                <div className="p-2 bg-surface-container border border-border/60 text-[11px] text-muted-foreground space-y-1">
+                  <div>• <span className="text-foreground">Extrusion:</span> Profile linear kg/m × Raw Aluminum EGP/ton</div>
+                  <div>• <span className="text-foreground">Glass:</span> Clear/Tinted sqm × Per-sqm Sheet Rate</div>
+                  <div>• <span className="text-foreground">Accessories:</span> Rollers, wool piles, gaskets, corner joints</div>
+                  <div>• <span className="text-foreground">Markups:</span> Configurable scrap %, transport & operating margin</div>
+                </div>
+                <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                  <span className="text-[10px] text-muted-foreground uppercase">SYSTEMS:</span>
+                  <Badge variant="outline" className="font-mono text-[10px] py-0 px-1.5 border-primary/50 text-primary">PS 9600</Badge>
+                  <Badge variant="outline" className="font-mono text-[10px] py-0 px-1.5 border-border">PS 6600</Badge>
+                  <Badge variant="outline" className="font-mono text-[10px] py-0 px-1.5 border-border">PS 4800</Badge>
+                  <Badge variant="outline" className="font-mono text-[10px] py-0 px-1.5 border-border">Sonata 45</Badge>
                 </div>
               </div>
             </div>
