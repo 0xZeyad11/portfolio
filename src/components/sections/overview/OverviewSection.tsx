@@ -69,7 +69,7 @@ export const OverviewSection: React.FC = () => {
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6 lg:gap-8">
               {/* Prominent Profile Picture Frame */}
               <div className="relative group shrink-0">
-                <div className="w-full max-w-[300px] sm:w-80 md:w-96 lg:w-[380px] xl:w-[440px] aspect-[4/5] rounded-none border-2 border-primary/40 bg-surface-container-lowest overflow-hidden shadow-xl relative p-0.5 group-hover:border-primary transition-colors">
+                <div className="w-full max-w-[300px] sm:w-80 md:w-96 lg:w-[380px] xl:w-[440px] aspect-[4/5] rounded-none border-2 border-primary/50 bg-surface-container-lowest overflow-hidden shadow-[0_0_20px_rgba(252,238,10,0.18)] relative p-0.5 group-hover:border-primary transition-all">
                   <img
                     src={profilePic}
                     alt={`${PROFILE_INFO.name} Profile`}
@@ -79,7 +79,7 @@ export const OverviewSection: React.FC = () => {
                   <div className="absolute bottom-0 right-0 pointer-events-none p-1.5">
                     <Badge
                       variant="secondary"
-                      className="bg-surface-container-lowest/90 text-[9px] font-mono text-secondary-foreground px-1.5 py-0.5 flex items-center gap-1 border border-secondary-foreground/30"
+                      className="bg-surface-container-lowest/95 text-[9px] font-mono text-secondary-foreground px-1.5 py-0.5 flex items-center gap-1 border border-secondary-foreground/50 shadow-[0_0_8px_rgba(0,240,255,0.35)]"
                     >
                       {PROFILE_INFO.operativeId}
                       <span className="w-1.5 h-1.5 bg-secondary-foreground animate-ping rounded-full inline-block"></span>
@@ -91,7 +91,7 @@ export const OverviewSection: React.FC = () => {
               {/* Name, Roles, Clearance & Bio Dossier */}
               <div className="flex-1 flex flex-col justify-start w-full">
                 <div className="flex flex-wrap items-center gap-2.5 mb-1.5">
-                  <CardTitle className="font-headline-lg text-2xl sm:text-3xl lg:text-4xl uppercase font-bold tracking-tight text-primary">
+                  <CardTitle className="font-headline-lg text-2xl sm:text-3xl lg:text-4xl uppercase font-bold tracking-tight text-primary drop-shadow-[0_0_12px_rgba(252,238,10,0.25)]">
                     {PROFILE_INFO.name}
                   </CardTitle>
                   <Badge
@@ -102,7 +102,7 @@ export const OverviewSection: React.FC = () => {
                   </Badge>
                   <Badge
                     variant="outline"
-                    className="font-mono text-xs text-primary font-bold border-primary/40 uppercase"
+                    className="font-mono text-xs text-primary font-bold border-primary/50 shadow-[0_0_8px_rgba(252,238,10,0.25)] uppercase"
                   >
                     {PROFILE_INFO.clearanceLevel}
                   </Badge>
