@@ -231,8 +231,8 @@
   --muted-foreground: #ccc7ab;
   --accent: #282a2d;
   --accent-foreground: #f4e700;
-  --destructive: #93000a;
-  --destructive-foreground: #ffdad6;
+  --destructive: #ff3344;
+  --destructive-foreground: #ffffff;
   --border: #333538;
   --input: #333538;
   --ring: #f4e700;
@@ -241,7 +241,7 @@
   --chart-2: #7df4ff;
   --chart-3: #00eefc;
   --chart-4: #ffdad6;
-  --chart-5: #93000a;
+  --chart-5: #ff3344;
   --sidebar: #111317;
   --sidebar-foreground: #e2e2e6;
   --sidebar-primary: #f4e700;
