@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { ZoomableImage } from "@/components/ZoomableImage";
 
 // Showcase images
 import bcDashboard from "@/assets/bluecoast showcase/02_dashboard_overview.png";
@@ -175,10 +176,13 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
           <div className="lg:col-span-7">
             <Card className="bg-surface-container border-border overflow-hidden clip-chamfer shadow-xl">
               <div className="aspect-video bg-black/60 relative overflow-hidden">
-                <img
+                <ZoomableImage
                   src={bcDashboard}
                   alt="Blue Coast Executive Dashboard"
+                  caption="FIGURE 1.0: EXECUTIVE PRODUCTION ANALYTICS DASHBOARD"
+                  badgeLabel="FIGURE 1.0"
                   className="w-full h-full object-cover"
+                  wrapperClassName="w-full h-full"
                 />
               </div>
               <CardContent className="p-4 bg-surface-container-low/70 border-t border-border">
@@ -214,10 +218,13 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             <div className="lg:col-span-7">
               <Card className="bg-surface-container border-border overflow-hidden clip-chamfer shadow-xl">
                 <div className="aspect-video bg-black/60 relative overflow-hidden">
-                  <img
+                  <ZoomableImage
                     src={bcCutplan}
                     alt="Cut Plan Bar Optimization Layout"
+                    caption="FIGURE 2.0: CUT PLAN BAR BIN-PACKING OPTIMIZATION LAYOUT"
+                    badgeLabel="FIGURE 2.0"
                     className="w-full h-full object-cover"
+                    wrapperClassName="w-full h-full"
                   />
                 </div>
                 <CardContent className="p-4 bg-surface-container-low/70 border-t border-border">
@@ -301,10 +308,13 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             <div className="lg:col-span-7">
               <Card className="bg-surface-container border-border overflow-hidden clip-chamfer shadow-xl">
                 <div className="aspect-video bg-black/60 relative overflow-hidden">
-                  <img
+                  <ZoomableImage
                     src={bcCalculator}
                     alt="Window Cost Calculator Interface"
+                    caption="FIGURE 3.0: PARAMETRIC WINDOW COST ESTIMATOR"
+                    badgeLabel="FIGURE 3.0"
                     className="w-full h-full object-cover"
+                    wrapperClassName="w-full h-full"
                   />
                 </div>
                 <CardContent className="p-4 bg-surface-container-low/70 border-t border-border">
@@ -340,10 +350,13 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <Card className="bg-surface-container border-border clip-chamfer overflow-hidden">
               <div className="aspect-video bg-black/60 relative overflow-hidden">
-                <img
+                <ZoomableImage
                   src={bcHierarchy}
                   alt="Compound Site Hierarchy"
+                  caption="FIGURE 4.0: ARCHITECTURAL SITE HIERARCHY (COMPOUND MURUJ)"
+                  badgeLabel="FIGURE 4.0"
                   className="w-full h-full object-cover"
+                  wrapperClassName="w-full h-full"
                 />
               </div>
               <CardContent className="p-4">
@@ -359,10 +372,13 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
 
             <Card className="bg-surface-container border-border clip-chamfer overflow-hidden">
               <div className="aspect-video bg-black/60 relative overflow-hidden">
-                <img
+                <ZoomableImage
                   src={bcInvoices}
                   alt="Invoices Ledger"
+                  caption="FIGURE 5.0: COMMERCIAL INVOICING & RTL PDF REPORTS"
+                  badgeLabel="FIGURE 5.0"
                   className="w-full h-full object-cover"
+                  wrapperClassName="w-full h-full"
                 />
               </div>
               <CardContent className="p-4">

@@ -3,6 +3,7 @@ import profilePic from "./assets/profile-pic.png";
 import kitchenlyPic from "./assets/kitchenly.jpg";
 import restaurantPic from "./assets/restaurant.jpg";
 import { BlueCoastDetails } from "@/pages/BlueCoastDetails";
+import { ZoomableImage } from "@/components/ZoomableImage";
 
 // Shadcn UI Components
 import { Button } from "@/components/ui/button";
@@ -354,12 +355,15 @@ function App() {
                 </CardHeader>
                 <CardContent className="p-4 flex flex-col items-center">
                   <div className="relative w-4/5 mx-auto overflow-hidden flex items-center justify-center border border-border shadow-lg bg-surface-container-lowest">
-                    <img
+                    <ZoomableImage
                       src={profilePic}
                       alt="Zeyad Hesham Profile"
+                      caption="Zeyad Hesham — Full-Stack & Backend Architect (ID: ZH-99)"
+                      badgeLabel="OPERATIVE ID"
                       className="w-full h-auto object-contain filter contrast-105"
+                      wrapperClassName="w-full h-full"
                     />
-                    <div className="absolute inset-0 pointer-events-none p-2 flex flex-col justify-between">
+                    <div className="absolute inset-0 pointer-events-none p-2 flex flex-col justify-between z-10">
                       <div className="flex justify-start">
                         <Badge variant="outline" className="bg-surface-container-lowest/80 text-[8px] font-mono text-primary border-primary/40">
                           ID: ZH-99
@@ -717,13 +721,15 @@ function App() {
                     </div>
 
                     {project.image ? (
-                      <div className="w-full aspect-video bg-surface-container-lowest border border-border/60 flex items-center justify-center relative overflow-hidden group/img">
-                        <img
+                      <div className="w-full aspect-video bg-surface-container-lowest border border-border/60 flex items-center justify-center relative overflow-hidden">
+                        <ZoomableImage
                           src={project.image}
                           alt={project.title}
-                          className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-300"
+                          caption={project.title}
+                          badgeLabel={project.tag}
+                          className="w-full h-full object-cover"
+                          wrapperClassName="w-full h-full"
                         />
-                        <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover/img:opacity-100 transition-opacity"></div>
                       </div>
                     ) : (
                       <div className="w-full aspect-video bg-surface-container-lowest border border-border/60 flex flex-col items-center justify-center relative font-mono text-xs text-muted-foreground gap-2">
