@@ -1,6 +1,5 @@
 import React from "react";
 import profilePic from "@/assets/profile-pic.png";
-import { ZoomableImage } from "@/components/ZoomableImage";
 import { SkillsMatrix } from "./SkillsMatrix";
 import { Button } from "@/components/ui/button";
 import {
@@ -71,13 +70,10 @@ export const OverviewSection: React.FC = () => {
               {/* Prominent Profile Picture Frame */}
               <div className="relative group shrink-0">
                 <div className="w-full max-w-[300px] sm:w-80 md:w-96 lg:w-[380px] xl:w-[440px] aspect-[4/5] rounded-none border-2 border-primary/40 bg-surface-container-lowest overflow-hidden shadow-xl relative p-0.5 group-hover:border-primary transition-colors">
-                  <ZoomableImage
+                  <img
                     src={profilePic}
                     alt={`${PROFILE_INFO.name} Profile`}
-                    caption={`${PROFILE_INFO.name} — ${PROFILE_INFO.role} & Backend Architect (ID: ${PROFILE_INFO.operativeId})`}
-                    badgeLabel="OPERATIVE ID"
                     className="w-full h-full object-cover filter contrast-105"
-                    wrapperClassName="w-full h-full"
                   />
                   {/* Corner HUD accent */}
                   <div className="absolute bottom-0 right-0 pointer-events-none p-1.5">
@@ -90,9 +86,6 @@ export const OverviewSection: React.FC = () => {
                     </Badge>
                   </div>
                 </div>
-                <span className="block text-center font-mono text-[10px] text-muted-foreground mt-1.5 tracking-wider">
-                  CLICK IMAGE TO ENLARGE
-                </span>
               </div>
 
               {/* Name, Roles, Clearance & Bio Dossier */}
