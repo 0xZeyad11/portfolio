@@ -30,10 +30,9 @@ export const OverviewSection: React.FC = () => {
     <section id="overview" className="scroll-mt-28 w-full mb-space-xl">
       <Card className="bg-surface-container border-border clip-chamfer shadow-xl flex flex-col justify-between">
         <div>
-          {/* Top Header with Compact Avatar & Spec Details */}
-          <CardHeader className="bg-surface-container-low/70 border-b border-border p-5 sm:p-6 pb-6">
-            {/* Top metadata strip */}
-            <div className="flex flex-wrap items-center justify-between gap-space-sm mb-4">
+          {/* Top metadata strip */}
+          <CardHeader className="bg-surface-container-low/70 border-b border-border p-4 sm:p-5">
+            <div className="flex flex-wrap items-center justify-between gap-space-sm">
               <div className="flex items-center gap-2">
                 <span className="w-3 h-3 bg-secondary-foreground inline-block"></span>
                 <span className="font-label-md font-bold uppercase tracking-wider text-secondary-foreground">
@@ -64,12 +63,14 @@ export const OverviewSection: React.FC = () => {
                 </Tooltip>
               </div>
             </div>
+          </CardHeader>
 
-            {/* Compact Avatar + Identity Section */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
-              {/* Profile Picture with HUD frame */}
+          {/* Unified Profile Body: Large Photo on Left, Full Details & Bio on Right */}
+          <CardContent className="p-5 sm:p-6 lg:p-7 space-y-6">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-6 lg:gap-8">
+              {/* Prominent Profile Picture Frame */}
               <div className="relative group shrink-0">
-                <div className="w-32 h-32 sm:w-36 sm:h-36 lg:w-40 lg:h-40 rounded-none border-2 border-primary/40 bg-surface-container-lowest overflow-hidden shadow-lg relative p-0.5 group-hover:border-primary transition-colors">
+                <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72 rounded-none border-2 border-primary/40 bg-surface-container-lowest overflow-hidden shadow-xl relative p-0.5 group-hover:border-primary transition-colors">
                   <ZoomableImage
                     src={profilePic}
                     alt={`${PROFILE_INFO.name} Profile`}
@@ -79,24 +80,24 @@ export const OverviewSection: React.FC = () => {
                     wrapperClassName="w-full h-full"
                   />
                   {/* Corner HUD accent */}
-                  <div className="absolute bottom-0 right-0 pointer-events-none p-1">
+                  <div className="absolute bottom-0 right-0 pointer-events-none p-1.5">
                     <Badge
                       variant="secondary"
-                      className="bg-surface-container-lowest/90 text-[8px] font-mono text-secondary-foreground px-1 py-0 flex items-center gap-1"
+                      className="bg-surface-container-lowest/90 text-[9px] font-mono text-secondary-foreground px-1.5 py-0.5 flex items-center gap-1 border border-secondary-foreground/30"
                     >
                       {PROFILE_INFO.operativeId}
-                      <span className="w-1 h-1 bg-secondary-foreground animate-ping rounded-full inline-block"></span>
+                      <span className="w-1.5 h-1.5 bg-secondary-foreground animate-ping rounded-full inline-block"></span>
                     </Badge>
                   </div>
                 </div>
-                <span className="block text-center font-mono text-[9px] text-muted-foreground mt-1 tracking-wider">
-                  CLICK TO ZOOM
+                <span className="block text-center font-mono text-[10px] text-muted-foreground mt-1.5 tracking-wider">
+                  CLICK IMAGE TO ENLARGE
                 </span>
               </div>
 
-              {/* Name, Role & Clearance Badges */}
-              <div className="flex-1 flex flex-col justify-center">
-                <div className="flex flex-wrap items-center gap-2 mb-1">
+              {/* Name, Roles, Clearance & Bio Dossier */}
+              <div className="flex-1 flex flex-col justify-start w-full">
+                <div className="flex flex-wrap items-center gap-2.5 mb-1.5">
                   <CardTitle className="font-headline-lg text-2xl sm:text-3xl lg:text-4xl uppercase font-bold tracking-tight text-primary">
                     {PROFILE_INFO.name}
                   </CardTitle>
@@ -114,19 +115,17 @@ export const OverviewSection: React.FC = () => {
                   </Badge>
                 </div>
 
-                <CardDescription className="font-title-md text-sm sm:text-base text-secondary-foreground font-mono">
+                <CardDescription className="font-title-md text-sm sm:text-base text-secondary-foreground font-mono mb-4">
                   {PROFILE_INFO.role} // NestJS • TypeScript • PostgreSQL • Docker • React
                 </CardDescription>
+
+                <p className="font-body-lg text-body-md sm:text-body-lg text-muted-foreground leading-relaxed">
+                  {PROFILE_INFO.bio}
+                </p>
               </div>
             </div>
-          </CardHeader>
 
-          <CardContent className="p-5 sm:p-6 pt-6 space-y-6">
-            <p className="font-body-lg text-body-lg text-muted-foreground max-w-4xl leading-relaxed">
-              {PROFILE_INFO.bio}
-            </p>
-
-            <Separator className="bg-border" />
+            <Separator className="bg-border mt-2" />
 
             {/* Skills Matrix with Shadcn Badges */}
             <SkillsMatrix />
