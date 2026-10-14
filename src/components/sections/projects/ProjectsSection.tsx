@@ -40,8 +40,8 @@ export const ProjectsSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+      {/* Projects List */}
+      <div className="flex flex-col gap-space-md">
         {filteredProjects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
