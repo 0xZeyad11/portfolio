@@ -18,9 +18,14 @@ import {
   SiTailwindcss,
   SiNpm,
   SiStripe,
+  SiElectron,
+  SiPython,
+  SiVite,
+  SiGit,
+  SiRadixui,
 } from "react-icons/si";
 import { TbSql } from "react-icons/tb";
-import { Terminal, Database } from "lucide-react";
+import { Terminal, Database, FileText } from "lucide-react";
 
 interface TechIconProps {
   name: string;
@@ -54,6 +59,7 @@ export const TechIcon: React.FC<TechIconProps> = ({ name, className = "size-3.5"
       return <SiSocketdotio className={className} />;
     case "jwtrbac":
     case "jwt":
+    case "rbac":
       return <SiJsonwebtokens className={className} />;
     case "postgresql":
       return <SiPostgresql className={className} />;
@@ -69,6 +75,20 @@ export const TechIcon: React.FC<TechIconProps> = ({ name, className = "size-3.5"
       return <SiCaddy className={className} />;
     case "react":
       return <SiReact className={className} />;
+    case "electron":
+      return <SiElectron className={className} />;
+    case "python":
+      return <SiPython className={className} />;
+    case "vite":
+      return <SiVite className={className} />;
+    case "git":
+      return <SiGit className={className} />;
+    case "radix":
+    case "radixui":
+      return <SiRadixui className={className} />;
+    case "pdf":
+    case "pdfmake":
+      return <FileText className={className} />;
     case "tailwindcss":
       return <SiTailwindcss className={className} />;
     case "npm":

@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ZoomableImage } from "@/components/ZoomableImage";
+import { TechIcon } from "@/components/common/TechIcon";
 
 // Showcase images
 import bcDashboard from "@/assets/bluecoast showcase/02_dashboard_overview.png";
@@ -119,6 +120,58 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
               algorithmic cutting layouts that eliminate scrap waste, automated multi-level architectural hierarchy
               tracking, and dynamic per-square-meter quotation engines.
             </p>
+
+            {/* Core Tech Stack Badges with Icons */}
+            <div className="space-y-2 pt-2">
+              <span className="font-mono text-[11px] text-muted-foreground uppercase tracking-wider flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 bg-primary rounded-full inline-block"></span>
+                DEPLOYED TECHNOLOGIES & TOOLS:
+              </span>
+              <div className="flex flex-wrap items-center gap-2">
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="NestJS" className="size-3.5 text-primary" /> NestJS 10
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="TypeScript" className="size-3.5 text-primary" /> TypeScript
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="PostgreSQL" className="size-3.5 text-primary" /> PostgreSQL 16
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="TypeORM" className="size-3.5 text-primary" /> TypeORM
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="Docker" className="size-3.5 text-primary" /> Docker & Compose
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="Python" className="size-3.5 text-primary" /> Python (PyBinPack)
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="Caddy" className="size-3.5 text-primary" /> Caddy Proxy
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="JWT" className="size-3.5 text-primary" /> JWT & RBAC
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="PDF" className="size-3.5 text-primary" /> pdfmake RTL
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="Electron" className="size-3.5 text-secondary-foreground" /> Electron 30
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="React" className="size-3.5 text-secondary-foreground" /> React 18
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="TailwindCSS" className="size-3.5 text-secondary-foreground" /> TailwindCSS
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="Vite" className="size-3.5 text-secondary-foreground" /> Vite
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                  <TechIcon name="Git" className="size-3.5 text-secondary-foreground" /> Git
+                </Badge>
+              </div>
+            </div>
           </div>
 
           {/* Project Overview Showcase Image */}
@@ -483,46 +536,99 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-2">
-            <div className="space-y-2">
-              <span className="font-mono text-xs font-bold text-secondary-foreground uppercase block">BACKEND</span>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• NestJS (Modular Architecture)</li>
-                <li>• TypeScript & Node.js</li>
-                <li>• TypeORM Migrations & Seeders</li>
-                <li>• JWT Auth & Global RBAC Guards</li>
-                <li>• pdfmake (Arabic Cairo RTL)</li>
-              </ul>
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold text-secondary-foreground uppercase block">
+                BACKEND ARCHITECTURE
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="NestJS" className="size-3.5 text-primary" /> NestJS 10
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="TypeScript" className="size-3.5 text-primary" /> TypeScript
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="Node.js" className="size-3.5 text-primary" /> Node.js
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="TypeORM" className="size-3.5 text-primary" /> TypeORM
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="JWT" className="size-3.5 text-primary" /> JWT & RBAC
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="PDF" className="size-3.5 text-primary" /> pdfmake RTL
+                </Badge>
+              </div>
+              <p className="text-[11px] text-muted-foreground font-mono leading-relaxed pt-1">
+                Modular architecture with 15+ domains, TypeORM migrations, and seeders.
+              </p>
             </div>
 
-            <div className="space-y-2">
-              <span className="font-mono text-xs font-bold text-secondary-foreground uppercase block">DATABASE</span>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• PostgreSQL 16</li>
-                <li>• Normalized Schema Design</li>
-                <li>• Historical Price Logs</li>
-                <li>• Aggregated Analytical Queries</li>
-              </ul>
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold text-secondary-foreground uppercase block">
+                DATABASE ENGINE
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="PostgreSQL" className="size-3.5 text-primary" /> PostgreSQL 16
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="SQL" className="size-3.5 text-primary" /> Normalized SQL
+                </Badge>
+              </div>
+              <p className="text-[11px] text-muted-foreground font-mono leading-relaxed pt-1">
+                Historical material price logging, audit tracking, and aggregated analytics.
+              </p>
             </div>
 
-            <div className="space-y-2">
-              <span className="font-mono text-xs font-bold text-secondary-foreground uppercase block">DESKTOP CLIENT</span>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• Electron 30</li>
-                <li>• React 18 & TypeScript</li>
-                <li>• Vite Build Pipeline</li>
-                <li>• TailwindCSS v4 & Radix UI</li>
-                <li>• TanStack Query & Zustand</li>
-              </ul>
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold text-secondary-foreground uppercase block">
+                DESKTOP CLIENT
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="Electron" className="size-3.5 text-secondary-foreground" /> Electron 30
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="React" className="size-3.5 text-secondary-foreground" /> React 18
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="Vite" className="size-3.5 text-secondary-foreground" /> Vite
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="TailwindCSS" className="size-3.5 text-secondary-foreground" /> TailwindCSS
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="Radix" className="size-3.5 text-secondary-foreground" /> Radix UI
+                </Badge>
+              </div>
+              <p className="text-[11px] text-muted-foreground font-mono leading-relaxed pt-1">
+                High-performance desktop native client with reactive state and fast cache.
+              </p>
             </div>
 
-            <div className="space-y-2">
-              <span className="font-mono text-xs font-bold text-secondary-foreground uppercase block">DEVOPS & TOOLS</span>
-              <ul className="text-xs text-muted-foreground space-y-1">
-                <li>• Docker & Docker Compose</li>
-                <li>• Caddy Reverse Proxy</li>
-                <li>• Python Cut Plan Integration</li>
-                <li>• Git Workflow</li>
-              </ul>
+            <div className="space-y-3">
+              <span className="font-mono text-xs font-bold text-secondary-foreground uppercase block">
+                DEVOPS & TOOLS
+              </span>
+              <div className="flex flex-wrap gap-1.5">
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="Docker" className="size-3.5 text-secondary-foreground" /> Docker Compose
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="Caddy" className="size-3.5 text-secondary-foreground" /> Caddy Proxy
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="Python" className="size-3.5 text-secondary-foreground" /> Python
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                  <TechIcon name="Git" className="size-3.5 text-secondary-foreground" /> Git
+                </Badge>
+              </div>
+              <p className="text-[11px] text-muted-foreground font-mono leading-relaxed pt-1">
+                Containerized local and staging deployments with automated reverse proxy.
+              </p>
             </div>
           </div>
         </section>

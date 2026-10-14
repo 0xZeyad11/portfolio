@@ -10,6 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Activity, Maximize2, Cpu, Database, Server, FileText } from "lucide-react";
 import { ZoomableImage } from "@/components/ZoomableImage";
+import { TechIcon } from "@/components/common/TechIcon";
 import bcDashboard from "@/assets/bluecoast showcase/02_dashboard_overview.png";
 
 interface ExperienceSectionProps {
@@ -61,6 +62,37 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   and glass fabricators. Orchestrates end-to-end manufacturing lifecycles, cut plan scrap optimization, and
                   automated quotation calculation. Built with NestJS, TypeScript, PostgreSQL, and Docker.
                 </CardDescription>
+              </div>
+
+              {/* Technologies Badges with Icons */}
+              <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="NestJS" className="size-3 text-primary" /> NestJS
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="TypeScript" className="size-3 text-primary" /> TypeScript
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="PostgreSQL" className="size-3 text-primary" /> PostgreSQL
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="TypeORM" className="size-3 text-primary" /> TypeORM
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="Docker" className="size-3 text-primary" /> Docker
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="Python" className="size-3 text-primary" /> Python
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="Caddy" className="size-3 text-primary" /> Caddy
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="Electron" className="size-3 text-secondary-foreground" /> Electron
+                </Badge>
+                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                  <TechIcon name="React" className="size-3 text-secondary-foreground" /> React
+                </Badge>
               </div>
 
               {/* Subsystem Telemetry Badges - 4 High Density Metric HUD cards */}
