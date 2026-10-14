@@ -17,9 +17,9 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { CheckCircle2, Copy, Mail, FileDown } from "lucide-react";
+import { CheckCircle2, Copy, Mail, FileText } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/common/Icons";
-import { PROFILE_INFO, cvUrl } from "@/constants/profile";
+import { PROFILE_INFO } from "@/constants/profile";
 import { useClipboard } from "@/hooks/useClipboard";
 
 export const OverviewSection: React.FC = () => {
@@ -184,9 +184,9 @@ export const OverviewSection: React.FC = () => {
             asChild
             className="font-mono uppercase font-bold tracking-wider clip-chamfer h-10 px-4 gap-2 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground cursor-pointer"
           >
-            <a href={cvUrl} download={PROFILE_INFO.cvFileName}>
-              <FileDown className="size-4" />
-              [ EXPORT // CV ]
+            <a href="#/cv">
+              <FileText className="size-4" />
+              [ VIEW // CV ]
             </a>
           </Button>
         </CardFooter>

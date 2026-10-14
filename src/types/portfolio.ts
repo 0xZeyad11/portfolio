@@ -1,6 +1,6 @@
 export type SectionId = "overview" | "experience" | "projects";
 
-export type AppRoute = "home" | "blue-coast";
+export type AppRoute = "home" | "blue-coast" | "cv";
 
 export interface Project {
   id: string;

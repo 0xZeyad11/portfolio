@@ -4,6 +4,7 @@ import { GlitchOverlay } from "@/components/common/GlitchOverlay";
 import { Header } from "@/components/layout/Header";
 import { HomePage } from "@/pages/HomePage";
 import { BlueCoastDetails } from "@/pages/BlueCoastDetails";
+import { CvViewerPage } from "@/pages/CvViewerPage";
 import { useHashRouter } from "@/hooks/useHashRouter";
 import { useNavigation } from "@/hooks/useNavigation";
 
@@ -15,6 +16,14 @@ export const App: React.FC = () => {
     return (
       <TooltipProvider delayDuration={150}>
         <BlueCoastDetails onBack={() => navigateTo("home", "experience")} />
+      </TooltipProvider>
+    );
+  }
+
+  if (currentRoute === "cv") {
+    return (
+      <TooltipProvider delayDuration={150}>
+        <CvViewerPage onBack={() => navigateTo("home", "overview")} />
       </TooltipProvider>
     );
   }

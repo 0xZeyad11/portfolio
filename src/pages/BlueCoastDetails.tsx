@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ZoomableImage } from "@/components/ZoomableImage";
-import { PROFILE_INFO, cvUrl } from "@/constants/profile";
 
 // Showcase images
 import bcDashboard from "@/assets/bluecoast showcase/02_dashboard_overview.png";
@@ -18,7 +17,7 @@ import {
   ArrowLeft,
   Cpu,
   Layers,
-  FileDown,
+  FileText,
   Mail,
   CheckCircle2,
   Boxes,
@@ -80,9 +79,9 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
               asChild
               className="font-mono text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-3.5 gap-2 border border-secondary-foreground/40 text-secondary-foreground hover:bg-secondary-foreground hover:text-background cursor-pointer"
             >
-              <a href={cvUrl} download={PROFILE_INFO.cvFileName}>
-                <FileDown className="size-3.5" />
-                <span className="hidden sm:inline">[ EXPORT CV ]</span>
+              <a href="#/cv">
+                <FileText className="size-3.5" />
+                <span className="hidden sm:inline">[ VIEW CV ]</span>
                 <span className="sm:hidden">CV</span>
               </a>
             </Button>
