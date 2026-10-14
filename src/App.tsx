@@ -1,7 +1,8 @@
-import { useState, useMemo, type SVGProps } from "react";
+import { useState, useMemo, useEffect, type SVGProps } from "react";
 import profilePic from "./assets/profile-pic.png";
 import kitchenlyPic from "./assets/kitchenly.jpg";
 import restaurantPic from "./assets/restaurant.jpg";
+import { BlueCoastDetails } from "@/pages/BlueCoastDetails";
 
 // Shadcn UI Components
 import { Button } from "@/components/ui/button";
@@ -118,6 +119,36 @@ const PROJECTS_DATA: Project[] = [
 ];
 
 function App() {
+  const [currentRoute, setCurrentRoute] = useState<"home" | "blue-coast">(() => {
+    return typeof window !== "undefined" &&
+      (window.location.hash.startsWith("#/blue-coast") || window.location.hash.startsWith("#/bluecoast"))
+      ? "blue-coast"
+      : "home";
+  });
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash.startsWith("#/blue-coast") || window.location.hash.startsWith("#/bluecoast")) {
+        setCurrentRoute("blue-coast");
+      } else {
+        setCurrentRoute("home");
+      }
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
+
+  const navigateToBlueCoast = () => {
+    window.location.hash = "/blue-coast";
+    setCurrentRoute("blue-coast");
+  };
+
+  const navigateToHome = () => {
+    window.location.hash = "#experience";
+    setCurrentRoute("home");
+  };
+
   const [activeSection, setActiveSection] = useState<"overview" | "experience" | "projects">("overview");
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
@@ -154,6 +185,14 @@ function App() {
         p.technologies.some((t) => t.toLowerCase().includes(q))
     );
   }, [searchQuery]);
+
+  if (currentRoute === "blue-coast") {
+    return (
+      <TooltipProvider delayDuration={150}>
+        <BlueCoastDetails onBack={navigateToHome} />
+      </TooltipProvider>
+    );
+  }
 
   return (
     <TooltipProvider delayDuration={150}>
@@ -619,6 +658,24 @@ function App() {
                     using Docker Compose for both development and production environments.
                   </li>
                 </ul>
+
+                {/* Subpage Dossier Link */}
+                <div className="mt-6 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-secondary-foreground rounded-full"></span>
+                    <span className="font-mono text-xs text-muted-foreground">
+                      ARCHITECTURAL CASE STUDY & SYSTEM SCREENSHOTS
+                    </span>
+                  </div>
+
+                  <Button
+                    variant="default"
+                    onClick={navigateToBlueCoast}
+                    className="font-mono font-bold text-xs uppercase tracking-wider clip-chamfer gap-2 h-9 px-4 cursor-pointer shadow-md hover:shadow-primary/20"
+                  >
+                    [ VIEW FULL BLUE COAST ERP CASE STUDY → ]
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </section>
