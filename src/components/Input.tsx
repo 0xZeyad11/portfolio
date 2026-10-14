@@ -1,30 +1,39 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { type InputHTMLAttributes } from 'react';
+import { Input as ShadcnInput } from '@/components/ui/input';
+import { cn } from '@/lib/utils';
 
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
 }
 
-export const Input: React.FC<InputProps> = ({ 
+export const Input = React.forwardRef<HTMLInputElement, InputProps>(({ 
   label,
-  className = '', 
+  className, 
   placeholder,
   ...props 
-}) => {
+}, ref) => {
   return (
-    <div className="flex flex-col gap-1 w-full">
+    <div className="flex flex-col gap-1.5 w-full">
       {label && (
-        <label className="text-cyber-text font-mono text-[11px] font-medium tracking-[0.1em] uppercase">
+        <label className="text-muted-foreground font-mono text-[11px] font-medium tracking-[0.1em] uppercase">
           {label}
         </label>
       )}
       <div className="relative">
-        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-cyber-primary"></div>
-        <input 
-          className={`w-full bg-cyber-base-1 border border-transparent focus:border-cyber-secondary px-4 py-3 pl-6 font-mono text-[13px] text-cyber-text outline-none transition-colors duration-0 ${className}`}
+        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-primary z-10"></div>
+        <ShadcnInput 
+          ref={ref}
+          className={cn(
+            "w-full bg-surface-container/70 border-border focus-visible:border-secondary-foreground pl-4 font-mono text-[13px] text-foreground outline-none transition-colors duration-150 h-10 rounded-sm",
+            className
+          )}
           placeholder={placeholder ? `// ${placeholder.toUpperCase()}` : '// ENTER_QUERY_STRING...'}
           {...props}
         />
       </div>
     </div>
   );
-};
+});
+
+Input.displayName = 'Input';
+export { ShadcnInput };

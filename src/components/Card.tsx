@@ -1,34 +1,53 @@
-import React, { HTMLAttributes } from 'react';
+import React, { type HTMLAttributes } from 'react';
+import { 
+  Card as ShadcnCard, 
+  CardHeader, 
+  CardTitle, 
+  CardDescription, 
+  CardContent, 
+  CardFooter 
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
-interface CardProps extends HTMLAttributes<HTMLDivElement> {
+export interface CyberCardProps extends HTMLAttributes<HTMLDivElement> {
   metadata?: string[];
+  size?: 'default' | 'sm';
 }
 
-export const Card: React.FC<CardProps> = ({ 
+export const Card = React.forwardRef<HTMLDivElement, CyberCardProps>(({ 
   children, 
   metadata = ['NC-NET: SECURE', 'RAM: 64TB', 'BUFFER: ACTIVE'],
-  className = '', 
+  className,
+  size = 'default',
   ...props 
-}) => {
+}, ref) => {
   return (
-    <div 
-      className={`relative bg-cyber-base-1 border border-cyber-base-3 clip-chamfer border-corner-bracket flex flex-col ${className}`}
+    <ShadcnCard 
+      ref={ref}
+      size={size}
+      className={cn(
+        "relative bg-card/90 border border-border clip-chamfer flex flex-col backdrop-blur-sm shadow-xl",
+        className
+      )}
       {...props}
     >
-      {/* Utility Bar */}
+      {/* Utility / Telemetry Bar */}
       {metadata && metadata.length > 0 && (
-        <div className="flex flex-wrap gap-4 px-4 py-1 border-b border-cyber-base-3 bg-cyber-base-2/30">
+        <div className="flex flex-wrap gap-4 px-4 py-1.5 border-b border-border bg-surface-container-low/60">
           {metadata.map((meta, i) => (
-            <span key={i} className="font-mono text-[9px] font-medium tracking-[0.12em] text-cyber-secondary">
+            <span key={i} className="font-mono text-[9px] font-medium tracking-[0.12em] text-secondary-foreground">
               {meta}
             </span>
           ))}
         </div>
       )}
       
-      <div className="p-6 relative z-10">
+      <div className="p-6 relative z-10 flex flex-col flex-1">
         {children}
       </div>
-    </div>
+    </ShadcnCard>
   );
-};
+});
+
+Card.displayName = 'Card';
+export { CardHeader, CardTitle, CardDescription, CardContent, CardFooter };
