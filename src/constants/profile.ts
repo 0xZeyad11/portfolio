@@ -13,4 +13,4 @@ export const PROFILE_INFO = {
   bio: `Highly skilled Full-Stack Engineer specializing in scalable REST API design, robust backend architecture using NestJS, TypeScript, Node.js, and PostgreSQL, and modern frontend development with React, HTML, CSS, and Tailwind CSS. Proficient in developing production systems with JWT authentication, role-based access control (RBAC), real-time communication via WebSockets, and geospatial querying. Experienced in optimizing database schema design and orchestrating containerized deployments with Docker, ensuring high performance and security.`,
 };
 
-export const cvUrl = new URL("../../assets/Zeyad_Hesham_FullStack.pdf", import.meta.url).href;
+export const cvUrl = new URL("../assets/cv.pdf", import.meta.url).href;
