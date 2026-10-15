@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <defs>
+    <filter id="zh-yellow-halo" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#fcee0a" flood-opacity="0.65" />
+      <feDropShadow dx="0" dy="0" stdDeviation="5.5" flood-color="#fcee0a" flood-opacity="0.3" />
+    </filter>
+    <filter id="zh-red-halo" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#ff003c" flood-opacity="0.65" />
+      <feDropShadow dx="0" dy="0" stdDeviation="5.5" flood-color="#ff003c" flood-opacity="0.3" />
+    </filter>
+    <filter id="zh-white-halo" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="0" stdDeviation="1.5" flood-color="#ffffff" flood-opacity="0.4" />
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#a0b0c5" flood-opacity="0.2" />
+    </filter>
+    <pattern id="zh-grid" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#1d212b" stroke-width="0.75" />
+    </pattern>
+  </defs>
+
+  <!-- 1. Background -->
+  <rect width="100" height="100" rx="6" fill="#090a0d" stroke="#222733" stroke-width="1" />
+
+  <!-- 2. Faint Grid -->
+  <rect width="100" height="100" rx="6" fill="url(#zh-grid)" opacity="0.6" />
+
+  <!-- 3. Upper-Right Tiny Warning Badge -->
+  <g opacity="0.8">
+    <rect x="76" y="5" width="19" height="7" rx="1" fill="#140a0f" stroke="#ff003c" stroke-width="0.7" stroke-opacity="0.65" />
+    <polygon points="79.5,10 81,6.5 82.5,10" fill="none" stroke="#ff4d73" stroke-width="0.6" />
+    <text x="89" y="9.8" font-family="'JetBrains Mono', monospace" font-size="3" font-weight="700" fill="#ff4d73" text-anchor="middle" letter-spacing="0.4">WARN</text>
+  </g>
+
+  <!-- 4. Four Chunky Corner Brackets -->
+  <g fill="#ffffff" filter="url(#zh-white-halo)">
+    <path d="M 19,16 H 31 V 23 H 23 V 31 H 16 V 19 L 19,16 Z" />
+    <path d="M 81,16 L 84,19 V 31 H 77 V 23 H 69 V 16 H 81 Z" />
+    <path d="M 16,69 H 23 V 77 H 31 V 84 H 19 L 16,81 V 69 Z" />
+    <path d="M 77,77 V 69 H 84 V 81 L 81,84 H 69 V 77 H 77 Z" />
+  </g>
+
+  <!-- 5. Glyphs: Z in Yellow, H in Red -->
+  <path d="M 24,35 H 48 V 44.5 L 34,55.5 H 48 V 65 H 24 V 55.5 L 38,44.5 H 24 Z" fill="#fcee0a" filter="url(#zh-yellow-halo)" />
+  <path d="M 52,35 H 60 V 45.5 H 68 V 35 H 76 V 65 H 68 V 54.5 H 60 V 65 H 52 Z" fill="#ff003c" filter="url(#zh-red-halo)" />
+
+  <!-- 6. Abstract Mark -->
+  <g fill="#ffffff" opacity="0.9">
+    <path d="M 87,88 H 91 L 94,91.5 V 95 H 90.5 L 87,91.5 Z" />
+    <path d="M 91.5,88 L 95,88 V 91.5 Z" />
+  </g>
+</svg>
