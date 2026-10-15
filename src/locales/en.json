@@ -283,6 +283,10 @@
     "ready": "READY",
     "page": "PAGE 1 / 1",
     "openNewTab": "OPEN IN NEW TAB",
-    "fallbackNotice": "If your browser restricts inline PDF rendering on mobile devices, use the buttons above to view in a new tab or download directly."
+    "fallbackNotice": "If your browser restricts inline PDF rendering on mobile devices, use the buttons above to view in a new tab or download directly.",
+    "backShort": "[ ← BACK ]",
+    "mobileHint": "For the smoothest reading experience on mobile with pinch-to-zoom and multi-page scrolling, tap below to open in full screen or download directly:",
+    "openFull": "FULL SCREEN VIEWER",
+    "downloadPdf": "SAVE PDF"
   }
 }
