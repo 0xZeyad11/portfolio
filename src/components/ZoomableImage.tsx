@@ -84,7 +84,7 @@ export const ZoomableImage: React.FC<ZoomableImageProps> = ({
           {/* Header Bar */}
           <DialogHeader className="p-1 pb-2 border-b border-border flex flex-row items-center justify-between space-y-0 gap-3">
             <div className="flex items-center gap-2 pr-8">
-              <Badge variant="default" className="font-mono text-[10px] font-bold uppercase py-0.5 px-2">
+              <Badge variant="default" className="font-space text-[10px] font-bold uppercase py-0.5 px-2">
                 {badgeLabel || "HIGH FIDELITY PREVIEW"}
               </Badge>
               <DialogTitle className="font-mono text-xs sm:text-sm font-bold uppercase tracking-wider text-foreground truncate">

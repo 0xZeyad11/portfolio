@@ -35,7 +35,7 @@ export const SkillsMatrix: React.FC = () => {
                   <Badge
                     key={skill.name}
                     variant="default"
-                    className="font-mono text-xs font-bold uppercase py-1 px-2.5 gap-1.5"
+                    className="font-space text-xs font-bold uppercase py-1 px-2.5 gap-1.5"
                   >
                     <TechIcon name={skill.name} className="size-3" />
                     {skill.name}
@@ -47,7 +47,7 @@ export const SkillsMatrix: React.FC = () => {
                   <Badge
                     key={skill.name}
                     variant="secondary"
-                    className="font-mono text-xs uppercase py-1 px-2.5 gap-1.5"
+                    className="font-space text-xs font-bold uppercase py-1 px-2.5 gap-1.5"
                   >
                     <TechIcon name={skill.name} className="size-3" />
                     {skill.name}
@@ -58,7 +58,7 @@ export const SkillsMatrix: React.FC = () => {
                 <Badge
                   key={skill.name}
                   variant="outline"
-                  className={`font-mono text-xs uppercase py-1 px-2.5 gap-1.5 ${
+                  className={`font-space text-xs uppercase py-1 px-2.5 gap-1.5 ${
                     skill.highlight
                       ? "border-primary/50 text-primary font-bold shadow-[0_0_8px_rgba(252,238,10,0.25)]"
                       : "border-border"

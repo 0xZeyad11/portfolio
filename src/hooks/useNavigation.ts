@@ -14,7 +14,13 @@ export function useNavigation(initialSection: SectionId = "overview") {
   const rafIdRef = useRef<number | null>(null);
 
   const navigateToSection = (section: SectionId) => {
-    if (activeSection === section) return;
+    if (activeSection === section) {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
     setIsTransitioning(true);
     setActiveSection(section);
     isManualScrollRef.current = true;

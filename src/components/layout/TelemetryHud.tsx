@@ -10,7 +10,7 @@ export const TelemetryHud: React.FC = () => {
             SYS.OP: Z.01 // OPERATIVE Overview
           </span>
           <span className="font-label-md text-label-md text-secondary-foreground font-mono font-bold uppercase tracking-wider">
-            :: BACKEND & FULLSTACK ARCHITECT
+            :: SOFTWARE ENGINEER
           </span>
         </div>
         <div className="hidden lg:flex items-center gap-space-md font-label-sm text-label-sm text-muted-foreground font-mono">

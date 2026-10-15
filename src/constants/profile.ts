@@ -1,9 +1,8 @@
 export const PROFILE_INFO = {
   name: "ZEYAD HESHAM",
-  role: "Full-Stack Engineer",
-  systemRole: "BACKEND & FULLSTACK ARCHITECT",
+  role: "Software-Engineer",
+  systemRole: "SOFTWARE ENGINEER",
   operativeId: "ZH-99",
-  clearanceLevel: "TIER-1 ARCHITECT",
   baseOfOperations: "EGYPT",
   status: "OPEN-TO-WORK",
   email: "zeyadhesham176@gmail.com",

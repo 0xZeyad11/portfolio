@@ -42,12 +42,12 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 >
                   CORP: BLUE COAST ERP
                 </Badge>
-                <Badge variant="outline" className="font-mono text-muted-foreground border-border text-xs">
+                <Badge variant="outline" className="font-space font-bold text-muted-foreground border-border text-xs">
                   FREELANCE
                 </Badge>
                 <Badge
                   variant="outline"
-                  className="font-mono text-secondary-foreground font-bold bg-surface-container-low px-2.5 py-0.5 border-border text-xs"
+                  className="font-space text-secondary-foreground font-bold bg-surface-container-low px-2.5 py-0.5 border-border text-xs"
                 >
                   JAN 2026 - PRESENT
                 </Badge>
@@ -66,46 +66,46 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
 
               {/* Technologies Badges with Icons */}
               <div className="flex flex-wrap items-center gap-1.5 pt-0.5">
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="NestJS" className="size-3 text-primary" /> NestJS
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="TypeScript" className="size-3 text-primary" /> TypeScript
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="PostgreSQL" className="size-3 text-primary" /> PostgreSQL
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="TypeORM" className="size-3 text-primary" /> TypeORM
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="Docker" className="size-3 text-primary" /> Docker
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="Python" className="size-3 text-primary" /> Python
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="Caddy" className="size-3 text-primary" /> Caddy
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="JWT" className="size-3 text-primary" /> JWT / RBAC
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="PDF" className="size-3 text-primary" /> pdfmake
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="Electron" className="size-3 text-secondary-foreground" /> Electron
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="React" className="size-3 text-secondary-foreground" /> React
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="TailwindCSS" className="size-3 text-secondary-foreground" /> Tailwind
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="Vite" className="size-3 text-secondary-foreground" /> Vite
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-0.5 gap-1.5">
                   <TechIcon name="Git" className="size-3 text-secondary-foreground" /> Git
                 </Badge>
               </div>
@@ -237,9 +237,9 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
           </div>
 
           {/* Subpage Dossier Link Footer */}
-          <div className="mt-8 pt-4 border-t border-border flex flex-wrap items-center justify-between gap-3">
+          <div className="mt-8 pt-4 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-secondary-foreground rounded-full animate-pulse"></span>
+              <span className="w-2 h-2 bg-secondary-foreground rounded-full animate-pulse shrink-0"></span>
               <span className="font-mono text-xs text-muted-foreground">
                 ARCHITECTURAL CASE STUDY & 6 INTERACTIVE SYSTEM SCREENS READY
               </span>
@@ -248,7 +248,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
             <Button
               variant="default"
               onClick={onNavigateToSubpage}
-              className="font-mono font-bold text-xs uppercase tracking-wider clip-chamfer gap-2 h-9 px-4 cursor-pointer shadow-md hover:shadow-primary/20"
+              className="w-full sm:w-auto font-space font-bold text-xs uppercase tracking-wider clip-chamfer gap-2 h-9 px-4 cursor-pointer shadow-md hover:shadow-primary/20 text-center justify-center shrink-0"
             >
               [ VIEW FULL BLUE COAST ERP CASE STUDY → ]
             </Button>

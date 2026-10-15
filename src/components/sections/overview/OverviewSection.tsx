@@ -21,43 +21,63 @@ import { CheckCircle2, Copy, Mail, FileText } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/common/Icons";
 import { PROFILE_INFO } from "@/constants/profile";
 import { useClipboard } from "@/hooks/useClipboard";
+import { useEmailModal } from "@/context/EmailModalContext";
 
 export const OverviewSection: React.FC = () => {
   const { hasCopied, copy } = useClipboard();
+  const { openEmailModal } = useEmailModal();
 
   return (
     <section id="overview" className="scroll-mt-28 w-full mb-space-xl">
       <Card className="bg-surface-container border-border clip-chamfer shadow-xl flex flex-col justify-between">
         <div>
           {/* Top metadata strip */}
-          <CardHeader className="bg-surface-container-low/70 border-b border-border p-4 sm:p-5">
-            <div className="flex flex-wrap items-center justify-between gap-space-sm">
+          <CardHeader className="bg-surface-container-low/70 border-b border-border p-3 sm:p-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-space-sm">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 bg-secondary-foreground inline-block"></span>
-                <span className="font-label-md font-bold uppercase tracking-wider text-secondary-foreground">
+                <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-secondary-foreground inline-block shrink-0"></span>
+                <span className="font-label-sm sm:font-label-md font-bold uppercase tracking-wider text-secondary-foreground">
                   SPEC_SHEET // {PROFILE_INFO.systemRole}
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-label-sm text-muted-foreground font-mono">CONTACT:</span>
+                <span className="font-label-sm text-muted-foreground font-mono text-[11px] sm:text-xs">CONTACT:</span>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
                       variant="destructive"
                       size="sm"
-                      onClick={() => copy(PROFILE_INFO.email)}
-                      className="font-mono font-bold text-xs h-7 px-3 gap-1.5 cursor-pointer"
+                      onClick={() => openEmailModal()}
+                      className="font-mono font-bold text-xs h-7 px-2.5 sm:px-3 gap-1.5 cursor-pointer max-w-full truncate shadow-sm hover:brightness-110"
                     >
-                      {hasCopied ? (
-                        <CheckCircle2 className="size-3.5" />
-                      ) : (
-                        <Copy className="size-3.5" />
-                      )}
-                      {PROFILE_INFO.email}
+                      <Mail className="size-3.5 shrink-0" />
+                      <span className="truncate">{PROFILE_INFO.email}</span>
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p>{hasCopied ? "Copied to clipboard!" : "Click to copy email address"}</p>
+                    <p>Click to choose email client on this PC or compose online</p>
+                  </TooltipContent>
+                </Tooltip>
+
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      onClick={() => copy(PROFILE_INFO.email)}
+                      className="size-7 border-border hover:border-primary text-muted-foreground hover:text-primary cursor-pointer shrink-0"
+                      title="Copy email to clipboard"
+                    >
+                      {hasCopied ? (
+                        <CheckCircle2 className="size-3.5 text-secondary-foreground" />
+                      ) : (
+                        <Copy className="size-3.5" />
+                      )}
+                      <span className="sr-only">Copy email address</span>
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{hasCopied ? "Copied to clipboard!" : "Copy raw email address"}</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
@@ -65,21 +85,21 @@ export const OverviewSection: React.FC = () => {
           </CardHeader>
 
           {/* Unified Profile Body: Large Photo on Left, Full Details & Bio on Right */}
-          <CardContent className="p-5 sm:p-6 lg:p-7 space-y-6">
+          <CardContent className="p-4 sm:p-6 lg:p-7 space-y-6">
             <div className="flex flex-col md:flex-row items-center md:items-start gap-6 lg:gap-8">
-              {/* Prominent Profile Picture Frame */}
-              <div className="relative group shrink-0">
-                <div className="w-full max-w-[300px] sm:w-80 md:w-96 lg:w-[380px] xl:w-[440px] aspect-[4/5] rounded-none border-2 border-primary/50 bg-surface-container-lowest overflow-hidden shadow-[0_0_20px_rgba(252,238,10,0.18)] relative p-0.5 group-hover:border-primary transition-all">
+              {/* Profile Picture Frame: Downscaled and uncropped */}
+              <div className="relative group shrink-0 mx-auto md:mx-0">
+                <div className="w-40 sm:w-48 md:w-56 lg:w-64 xl:w-[270px] aspect-[1126/1397] rounded-none border-2 border-primary/50 bg-surface-container-lowest overflow-hidden shadow-[0_0_20px_rgba(252,238,10,0.18)] relative p-0.5 group-hover:border-primary transition-all">
                   <img
                     src={profilePic}
                     alt={`${PROFILE_INFO.name} Profile`}
-                    className="w-full h-full object-cover filter contrast-105"
+                    className="w-full h-full object-contain filter contrast-105"
                   />
                   {/* Corner HUD accent */}
                   <div className="absolute bottom-0 right-0 pointer-events-none p-1.5">
                     <Badge
                       variant="secondary"
-                      className="bg-surface-container-lowest/95 text-[9px] font-mono text-secondary-foreground px-1.5 py-0.5 flex items-center gap-1 border border-secondary-foreground/50 shadow-[0_0_8px_rgba(0,240,255,0.35)]"
+                      className="bg-surface-container-lowest/95 text-[9px] font-space font-bold text-secondary-foreground px-1.5 py-0.5 flex items-center gap-1 border border-secondary-foreground/50 shadow-[0_0_8px_rgba(0,240,255,0.35)]"
                     >
                       {PROFILE_INFO.operativeId}
                       <span className="w-1.5 h-1.5 bg-secondary-foreground animate-ping rounded-full inline-block"></span>
@@ -96,15 +116,9 @@ export const OverviewSection: React.FC = () => {
                   </CardTitle>
                   <Badge
                     variant="outline"
-                    className="font-mono text-xs text-foreground font-bold border-border uppercase"
+                    className="font-space text-xs text-foreground font-bold border-border uppercase"
                   >
                     BASE: {PROFILE_INFO.baseOfOperations}
-                  </Badge>
-                  <Badge
-                    variant="outline"
-                    className="font-mono text-xs text-primary font-bold border-primary/50 shadow-[0_0_8px_rgba(252,238,10,0.25)] uppercase"
-                  >
-                    {PROFILE_INFO.clearanceLevel}
                   </Badge>
                 </div>
 
@@ -113,34 +127,34 @@ export const OverviewSection: React.FC = () => {
                     {PROFILE_INFO.role} //
                   </span>
                   <div className="flex flex-wrap items-center gap-1.5">
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="NestJS" className="size-3" /> NestJS
                     </Badge>
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="TypeScript" className="size-3" /> TypeScript
                     </Badge>
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="Node.js" className="size-3" /> Node.js
                     </Badge>
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="Python" className="size-3" /> Python
                     </Badge>
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="PostgreSQL" className="size-3" /> PostgreSQL
                     </Badge>
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="MongoDB" className="size-3" /> MongoDB
                     </Badge>
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="Docker" className="size-3" /> Docker
                     </Badge>
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="React" className="size-3" /> React
                     </Badge>
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="Electron" className="size-3" /> Electron
                     </Badge>
-                    <Badge variant="default" className="font-mono text-xs gap-1.5 py-0.5 px-2.5">
+                    <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
                       <TechIcon name="WebSockets" className="size-3" /> WebSockets
                     </Badge>
                   </div>
@@ -160,11 +174,11 @@ export const OverviewSection: React.FC = () => {
         </div>
 
         {/* Primary Action Buttons using Shadcn Button */}
-        <CardFooter className="flex flex-wrap items-center gap-3 p-5 sm:p-6 pt-5 border-t border-border bg-surface-container-low/40">
+        <CardFooter className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-wrap items-center gap-2.5 sm:gap-3 p-4 sm:p-6 pt-4 sm:pt-5 border-t border-border bg-surface-container-low/40">
           <Button
             variant="default"
             asChild
-            className="font-mono font-bold uppercase tracking-wider clip-chamfer h-10 px-5 gap-2 cursor-pointer shadow-lg hover:shadow-primary/25"
+            className="w-full lg:w-auto font-space font-bold uppercase tracking-wider clip-chamfer h-10 px-4 sm:px-5 gap-2 cursor-pointer shadow-lg hover:shadow-primary/25 justify-center"
           >
             <a href={PROFILE_INFO.linkedinUrl} target="_blank" rel="noreferrer">
               <LinkedinIcon className="size-4" />
@@ -175,7 +189,7 @@ export const OverviewSection: React.FC = () => {
           <Button
             variant="secondary"
             asChild
-            className="font-mono uppercase font-bold tracking-wider clip-chamfer h-10 px-4 gap-2 border border-secondary-foreground/40 text-secondary-foreground hover:bg-secondary-foreground hover:text-background cursor-pointer"
+            className="w-full lg:w-auto font-space uppercase font-bold tracking-wider clip-chamfer h-10 px-4 gap-2 border border-secondary-foreground/40 text-secondary-foreground hover:bg-secondary-foreground hover:text-background cursor-pointer justify-center"
           >
             <a href={PROFILE_INFO.githubUrl} target="_blank" rel="noreferrer">
               <GithubIcon className="size-4" />
@@ -185,19 +199,17 @@ export const OverviewSection: React.FC = () => {
 
           <Button
             variant="destructive"
-            asChild
-            className="font-mono uppercase font-bold tracking-wider clip-chamfer h-10 px-4 gap-2 cursor-pointer"
+            onClick={() => openEmailModal()}
+            className="w-full lg:w-auto font-space uppercase font-bold tracking-wider clip-chamfer h-10 px-4 gap-2 cursor-pointer justify-center"
           >
-            <a href={`mailto:${PROFILE_INFO.email}`}>
-              <Mail className="size-4" />
-              [ PING // EMAIL ]
-            </a>
+            <Mail className="size-4" />
+            [ PING // EMAIL ]
           </Button>
 
           <Button
             variant="outline"
             asChild
-            className="font-mono uppercase font-bold tracking-wider clip-chamfer h-10 px-4 gap-2 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground cursor-pointer"
+            className="w-full lg:w-auto font-space uppercase font-bold tracking-wider clip-chamfer h-10 px-4 gap-2 border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground cursor-pointer justify-center"
           >
             <a href="#/cv">
               <FileText className="size-4" />

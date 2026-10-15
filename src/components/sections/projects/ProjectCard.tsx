@@ -20,7 +20,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <span className="font-mono text-xs font-bold text-primary">{project.tag}</span>
           <Badge
             variant={project.statusVariant}
-            className="font-mono text-[9px] uppercase px-1.5 py-0"
+            className="font-space font-bold text-[9px] uppercase px-1.5 py-0"
           >
             {project.status.replace("STATUS: ", "")}
           </Badge>
@@ -75,7 +75,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
               <Badge
                 key={tech}
                 variant="outline"
-                className="font-mono text-[10px] sm:text-xs bg-surface-container-highest/60 text-foreground border-border px-2.5 py-0.5 gap-1.5"
+                className="font-space font-bold text-[10px] sm:text-xs bg-surface-container-highest/60 text-foreground border-border px-2.5 py-0.5 gap-1.5"
               >
                 <TechIcon name={tech} className="size-3" />
                 {tech}
@@ -88,7 +88,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             variant={project.linkVariant}
             size="sm"
             asChild
-            className="font-mono font-bold text-xs uppercase tracking-wider clip-chamfer h-8 px-4 gap-1.5 cursor-pointer shrink-0"
+            className="w-full sm:w-auto font-space font-bold text-xs uppercase tracking-wider clip-chamfer h-8 px-4 gap-1.5 cursor-pointer shrink-0 text-center justify-center"
           >
             <a href={project.linkUrl} target="_blank" rel="noreferrer">
               {project.linkText}

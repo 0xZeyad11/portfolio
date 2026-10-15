@@ -26,6 +26,7 @@ import {
   Calculator,
   ShieldCheck,
 } from "lucide-react";
+import { useEmailModal } from "@/context/EmailModalContext";
 
 interface BlueCoastDetailsProps {
   onBack: () => void;
@@ -38,6 +39,7 @@ const LinkedinIcon = (props: SVGProps<SVGSVGElement>) => (
 );
 
 export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) => {
+  const { openEmailModal } = useEmailModal();
   React.useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -46,14 +48,15 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
     <div className="min-h-screen bg-surface-container-lowest text-on-surface font-body-md pb-24 antialiased selection:bg-primary selection:text-primary-foreground">
       {/* Sticky Top Navigation Header */}
       <header className="sticky top-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-border shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-2 sm:gap-4">
           <Button
             variant="outline"
             onClick={onBack}
-            className="font-mono text-xs uppercase font-bold tracking-wider border-border hover:border-primary text-foreground hover:text-primary clip-chamfer gap-2 h-9 px-3.5 cursor-pointer"
+            className="group font-space text-xs uppercase font-bold tracking-wider border-border hover:border-primary text-foreground hover:text-primary clip-chamfer gap-2 h-9 px-3 sm:px-3.5 cursor-pointer shrink-0"
           >
-            <ArrowLeft className="size-4" />
-            [ ← RETURN TO PORTFOLIO ]
+            <ArrowLeft className="size-4 group-hover:-translate-x-1 transition-transform duration-200" />
+            <span className="hidden sm:inline">[ RETURN TO PORTFOLIO ]</span>
+            <span className="sm:hidden">[ RETURN ]</span>
           </Button>
 
           <div className="hidden md:flex items-center gap-2">
@@ -67,7 +70,7 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             <Button
               variant="default"
               asChild
-              className="font-mono text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-3.5 gap-2 cursor-pointer shadow-md"
+              className="font-space text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-3.5 gap-2 cursor-pointer shadow-md"
             >
               <a href="mailto:zeyadhesham176@gmail.com">
                 <Mail className="size-3.5" />
@@ -79,7 +82,7 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             <Button
               variant="secondary"
               asChild
-              className="font-mono text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-3.5 gap-2 border border-secondary-foreground/40 text-secondary-foreground hover:bg-secondary-foreground hover:text-background cursor-pointer"
+              className="font-space text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-3.5 gap-2 border border-secondary-foreground/40 text-secondary-foreground hover:bg-secondary-foreground hover:text-background cursor-pointer"
             >
               <a href="#/cv">
                 <FileText className="size-3.5" />
@@ -96,13 +99,13 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
         {/* Hero Section */}
         <section className="space-y-6">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="default" className="font-mono text-xs font-bold uppercase py-1 px-3">
+            <Badge variant="default" className="font-space text-xs font-bold uppercase py-1 px-3">
               ENTERPRISE DESKTOP ERP
             </Badge>
-            <Badge variant="secondary" className="font-mono text-xs font-bold uppercase py-1 px-3 text-secondary-foreground">
-              ROLE: BACKEND & FULLSTACK ARCHITECT
+            <Badge variant="secondary" className="font-space text-xs font-bold uppercase py-1 px-3 text-secondary-foreground">
+              ROLE: SOFTWARE ENGINEER
             </Badge>
-            <Badge variant="outline" className="font-mono text-xs uppercase py-1 px-3 border-border text-muted-foreground">
+            <Badge variant="outline" className="font-space text-xs font-bold uppercase py-1 px-3 border-border text-muted-foreground">
               JAN 2026 - PRESENT
             </Badge>
           </div>
@@ -128,46 +131,46 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
                 DEPLOYED TECHNOLOGIES & TOOLS:
               </span>
               <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="NestJS" className="size-3.5 text-primary" /> NestJS 10
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="TypeScript" className="size-3.5 text-primary" /> TypeScript
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="PostgreSQL" className="size-3.5 text-primary" /> PostgreSQL 16
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="TypeORM" className="size-3.5 text-primary" /> TypeORM
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="Docker" className="size-3.5 text-primary" /> Docker & Compose
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="Python" className="size-3.5 text-primary" /> Python (PyBinPack)
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="Caddy" className="size-3.5 text-primary" /> Caddy Proxy
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="JWT" className="size-3.5 text-primary" /> JWT & RBAC
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="PDF" className="size-3.5 text-primary" /> pdfmake RTL
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="Electron" className="size-3.5 text-secondary-foreground" /> Electron 30
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="React" className="size-3.5 text-secondary-foreground" /> React 18
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="TailwindCSS" className="size-3.5 text-secondary-foreground" /> TailwindCSS
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="Vite" className="size-3.5 text-secondary-foreground" /> Vite
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container text-foreground border-border px-2.5 py-1 gap-1.5 shadow-sm">
                   <TechIcon name="Git" className="size-3.5 text-secondary-foreground" /> Git
                 </Badge>
               </div>
@@ -427,10 +430,10 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
                 </div>
                 <div className="flex flex-wrap items-center gap-1.5 pt-1">
                   <span className="text-[10px] text-muted-foreground uppercase">SYSTEMS:</span>
-                  <Badge variant="outline" className="font-mono text-[10px] py-0 px-1.5 border-primary/50 text-primary">PS 9600</Badge>
-                  <Badge variant="outline" className="font-mono text-[10px] py-0 px-1.5 border-border">PS 6600</Badge>
-                  <Badge variant="outline" className="font-mono text-[10px] py-0 px-1.5 border-border">PS 4800</Badge>
-                  <Badge variant="outline" className="font-mono text-[10px] py-0 px-1.5 border-border">Sonata 45</Badge>
+                  <Badge variant="outline" className="font-space font-bold text-[10px] py-0 px-1.5 border-primary/50 text-primary">PS 9600</Badge>
+                  <Badge variant="outline" className="font-space font-bold text-[10px] py-0 px-1.5 border-border">PS 6600</Badge>
+                  <Badge variant="outline" className="font-space font-bold text-[10px] py-0 px-1.5 border-border">PS 4800</Badge>
+                  <Badge variant="outline" className="font-space font-bold text-[10px] py-0 px-1.5 border-border">Sonata 45</Badge>
                 </div>
               </div>
             </div>
@@ -541,22 +544,22 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
                 BACKEND ARCHITECTURE
               </span>
               <div className="flex flex-wrap gap-1.5">
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="NestJS" className="size-3.5 text-primary" /> NestJS 10
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="TypeScript" className="size-3.5 text-primary" /> TypeScript
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="Node.js" className="size-3.5 text-primary" /> Node.js
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="TypeORM" className="size-3.5 text-primary" /> TypeORM
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="JWT" className="size-3.5 text-primary" /> JWT & RBAC
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="PDF" className="size-3.5 text-primary" /> pdfmake RTL
                 </Badge>
               </div>
@@ -570,10 +573,10 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
                 DATABASE ENGINE
               </span>
               <div className="flex flex-wrap gap-1.5">
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="PostgreSQL" className="size-3.5 text-primary" /> PostgreSQL 16
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="SQL" className="size-3.5 text-primary" /> Normalized SQL
                 </Badge>
               </div>
@@ -587,19 +590,19 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
                 DESKTOP CLIENT
               </span>
               <div className="flex flex-wrap gap-1.5">
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="Electron" className="size-3.5 text-secondary-foreground" /> Electron 30
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="React" className="size-3.5 text-secondary-foreground" /> React 18
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="Vite" className="size-3.5 text-secondary-foreground" /> Vite
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="TailwindCSS" className="size-3.5 text-secondary-foreground" /> TailwindCSS
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="Radix" className="size-3.5 text-secondary-foreground" /> Radix UI
                 </Badge>
               </div>
@@ -613,16 +616,16 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
                 DEVOPS & TOOLS
               </span>
               <div className="flex flex-wrap gap-1.5">
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="Docker" className="size-3.5 text-secondary-foreground" /> Docker Compose
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="Caddy" className="size-3.5 text-secondary-foreground" /> Caddy Proxy
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="Python" className="size-3.5 text-secondary-foreground" /> Python
                 </Badge>
-                <Badge variant="outline" className="font-mono text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
+                <Badge variant="outline" className="font-space font-bold text-xs bg-surface-container-low text-foreground border-border py-1 px-2.5 gap-1.5">
                   <TechIcon name="Git" className="size-3.5 text-secondary-foreground" /> Git
                 </Badge>
               </div>
@@ -648,20 +651,19 @@ export const BlueCoastDetails: React.FC<BlueCoastDetailsProps> = ({ onBack }) =>
             <Button
               variant="outline"
               onClick={onBack}
-              className="font-mono text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-4 border-border hover:border-primary cursor-pointer"
+              className="group font-space text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-4 gap-2 border-border hover:border-primary text-foreground hover:text-primary cursor-pointer shadow-md"
             >
-              [ ← BACK TO PORTFOLIO ]
+              <ArrowLeft className="size-3.5 group-hover:-translate-x-1 transition-transform duration-200" />
+              <span>[ RETURN TO PORTFOLIO ]</span>
             </Button>
 
             <Button
               variant="default"
-              asChild
+              onClick={() => openEmailModal("Blue Coast OS Inquiry // Zeyad Hesham")}
               className="font-mono text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-4 gap-2 cursor-pointer shadow-md"
             >
-              <a href="mailto:zeyadhesham176@gmail.com">
-                <Mail className="size-3.5" />
-                [ PING // EMAIL ]
-              </a>
+              <Mail className="size-3.5" />
+              [ PING // EMAIL ]
             </Button>
 
             <Button

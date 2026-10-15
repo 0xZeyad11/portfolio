@@ -22,7 +22,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         ref={ref}
         variant="default"
         className={cn(
-          "relative font-mono uppercase tracking-widest font-bold text-xs bg-primary text-primary-foreground hover:bg-primary/90 clip-chamfer transition-all duration-150 px-5 py-2.5 h-auto cursor-pointer",
+          "relative font-space uppercase tracking-widest font-bold text-xs bg-primary text-primary-foreground hover:bg-primary/90 clip-chamfer transition-all duration-150 px-5 py-2.5 h-auto cursor-pointer",
           className
         )}
         {...props}
@@ -41,7 +41,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         ref={ref}
         variant="outline"
         className={cn(
-          "font-mono uppercase tracking-widest text-xs border border-secondary-foreground/40 text-secondary-foreground bg-secondary/80 hover:bg-secondary-foreground hover:text-background clip-chamfer transition-all duration-150 px-5 py-2.5 h-auto cursor-pointer",
+          "font-space uppercase tracking-widest font-bold text-xs border border-secondary-foreground/40 text-secondary-foreground bg-secondary/80 hover:bg-secondary-foreground hover:text-background clip-chamfer transition-all duration-150 px-5 py-2.5 h-auto cursor-pointer",
           className
         )}
         {...props}
@@ -57,7 +57,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(({
         ref={ref}
         variant="destructive"
         className={cn(
-          "font-mono uppercase tracking-widest text-xs border border-destructive text-destructive-foreground hover:bg-destructive hover:text-white clip-chamfer transition-all duration-150 px-5 py-2.5 h-auto cursor-pointer",
+          "font-space uppercase tracking-widest font-bold text-xs border border-destructive text-destructive-foreground hover:bg-destructive hover:text-white clip-chamfer transition-all duration-150 px-5 py-2.5 h-auto cursor-pointer",
           className
         )}
         {...props}
