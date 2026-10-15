@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Terminal, ExternalLink } from "lucide-react";
 import { TechIcon } from "@/components/common/TechIcon";
+import { useLanguage } from "@/context/LanguageContext";
 import type { Project } from "@/types/portfolio";
 
 interface ProjectCardProps {
@@ -12,17 +13,27 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+  const { t } = useLanguage();
+
+  const projectKey = project.id.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
+  const tag = t(`projects.items.${projectKey}.tag`, project.tag);
+  const status = t(`projects.items.${projectKey}.status`, project.status.replace("STATUS: ", ""));
+  const category = t(`projects.items.${projectKey}.category`, project.category);
+  const title = t(`projects.items.${projectKey}.title`, project.title);
+  const description = t(`projects.items.${projectKey}.description`, project.description);
+  const linkText = t(`projects.items.${projectKey}.button`, project.linkText);
+
   return (
     <Card className="bg-surface-container border-border clip-chamfer shadow-xl flex flex-col md:flex-row group hover:border-primary/50 transition-colors overflow-hidden">
-      {/* Left: Project Image Thumbnail */}
-      <div className="w-full md:w-80 lg:w-96 shrink-0 bg-surface-container-lowest border-b md:border-b-0 md:border-r border-border/60 p-4 flex flex-col justify-between">
+      {/* Left / Inline Start: Project Image Thumbnail */}
+      <div className="w-full md:w-80 lg:w-96 shrink-0 bg-surface-container-lowest border-b md:border-b-0 md:border-e border-border/60 p-4 flex flex-col justify-between">
         <div className="flex justify-between items-center bg-surface-container-low border border-border/40 px-2.5 py-1 mb-3">
-          <span className="font-mono text-xs font-bold text-primary">{project.tag}</span>
+          <span className="font-mono text-xs font-bold text-primary">{tag}</span>
           <Badge
             variant={project.statusVariant}
             className="font-space font-bold text-[9px] uppercase px-1.5 py-0"
           >
-            {project.status.replace("STATUS: ", "")}
+            {status}
           </Badge>
         </div>
 
@@ -30,9 +41,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           <div className="w-full aspect-video bg-surface-container-lowest border border-border/60 flex items-center justify-center relative overflow-hidden group-hover:border-primary/40 transition-colors">
             <ZoomableImage
               src={project.image}
-              alt={project.title}
-              caption={project.title}
-              badgeLabel={project.tag}
+              alt={title}
+              caption={title}
+              badgeLabel={tag}
               className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
               wrapperClassName="w-full h-full"
             />
@@ -45,26 +56,26 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
         )}
 
         <div className="mt-3 hidden md:flex items-center justify-between text-[11px] font-mono text-muted-foreground">
-          <span>CLICK IMAGE TO EXPAND</span>
-          <span className="text-primary font-bold">HD</span>
+          <span>{t("projects.clickExpand", "CLICK IMAGE TO EXPAND")}</span>
+          <span className="text-primary font-bold">{t("projects.hd", "HD")}</span>
         </div>
       </div>
 
-      {/* Right: Project Details */}
+      {/* Right / Inline End: Project Details */}
       <div className="flex-1 flex flex-col justify-between p-5 md:p-6">
         <div>
           <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
             <span className="font-mono text-xs uppercase font-bold text-secondary-foreground tracking-wider">
-              // {project.category}
+              // {category}
             </span>
           </div>
 
           <CardTitle className="font-headline-sm text-xl lg:text-2xl font-bold text-foreground uppercase tracking-tight">
-            {project.title}
+            {title}
           </CardTitle>
 
           <CardDescription className="font-body-md text-sm text-muted-foreground mt-3 leading-relaxed">
-            {project.description}
+            {description}
           </CardDescription>
         </div>
 
@@ -91,8 +102,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
             className="w-full sm:w-auto font-space font-bold text-xs uppercase tracking-wider clip-chamfer h-8 px-4 gap-1.5 cursor-pointer shrink-0 text-center justify-center"
           >
             <a href={project.linkUrl} target="_blank" rel="noreferrer">
-              {project.linkText}
-              <ExternalLink className="size-3.5" />
+              {linkText}
+              <ExternalLink className="size-3.5 rtl:rotate-180" />
             </a>
           </Button>
         </div>

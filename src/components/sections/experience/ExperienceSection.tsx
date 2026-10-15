@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Activity, Maximize2, Cpu, Database, Server, FileText } from "lucide-react";
 import { ZoomableImage } from "@/components/ZoomableImage";
 import { TechIcon } from "@/components/common/TechIcon";
+import { useLanguage } from "@/context/LanguageContext";
 import bcDashboard from "@/assets/bluecoast showcase/02_dashboard_overview.png";
 
 interface ExperienceSectionProps {
@@ -20,12 +21,19 @@ interface ExperienceSectionProps {
 export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
   onNavigateToSubpage,
 }) => {
+  const { t } = useLanguage();
+
+  const rawHighlights = t("experience.highlights");
+  const highlights: string[] = Array.isArray(rawHighlights) ? (rawHighlights as string[]) : [];
+  const col1 = highlights.slice(0, Math.ceil(highlights.length / 2));
+  const col2 = highlights.slice(Math.ceil(highlights.length / 2));
+
   return (
     <section id="experience" className="scroll-mt-28 w-full mb-space-xl">
       <div className="flex items-center justify-between bg-surface-container-low border border-border px-space-md py-space-xs mb-space-md">
         <span className="font-label-md text-label-md uppercase font-bold text-primary tracking-wider flex items-center gap-2">
           <Activity className="size-4 text-primary" />
-          // OPERATIONAL HISTORY & EXPERTISE
+          {t("experience.sectionBadge", "// OPERATIONAL HISTORY & EXPERTISE")}
         </span>
       </div>
 
@@ -40,27 +48,25 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   variant="secondary"
                   className="font-mono text-secondary-foreground font-bold tracking-widest uppercase"
                 >
-                  CORP: BLUE COAST ERP
+                  {t("experience.company", "CORP: BLUE COAST ERP")}
                 </Badge>
                 <Badge variant="outline" className="font-space font-bold text-muted-foreground border-border text-xs">
-                  FREELANCE
+                  {t("experience.type", "FREELANCE")}
                 </Badge>
                 <Badge
                   variant="outline"
                   className="font-space text-secondary-foreground font-bold bg-surface-container-low px-2.5 py-0.5 border-border text-xs"
                 >
-                  JAN 2026 - PRESENT
+                  {t("experience.period", "JAN 2026 - PRESENT")}
                 </Badge>
               </div>
 
               <div>
                 <CardTitle className="font-headline-sm text-2xl font-bold text-on-surface uppercase tracking-tight">
-                  FULLSTACK ENGINEER (FREELANCE)
+                  {t("experience.title", "FULLSTACK ENGINEER (FREELANCE)")}
                 </CardTitle>
                 <CardDescription className="font-body-md text-sm sm:text-base text-muted-foreground mt-2 leading-relaxed">
-                  Designed and built the complete backend for a production desktop ERP suite engineered for industrial aluminum
-                  and glass fabricators. Orchestrates end-to-end manufacturing lifecycles, cut plan scrap optimization, and
-                  automated quotation calculation. Built with NestJS, TypeScript, PostgreSQL, and Docker.
+                  {t("experience.description", "Designed and built the complete backend for a production desktop ERP suite engineered for industrial aluminum and glass fabricators.")}
                 </CardDescription>
               </div>
 
@@ -114,34 +120,34 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1">
                 <div className="p-2.5 bg-surface-container/80 border border-border clip-chamfer">
                   <span className="font-mono text-[10px] text-muted-foreground uppercase flex items-center gap-1">
-                    <Server className="size-3 text-primary" /> BACKEND
+                    <Server className="size-3 text-primary" /> {t("experience.telemetry.backend", "BACKEND")}
                   </span>
-                  <span className="font-mono font-bold text-xs text-primary block mt-0.5">15+ Modules</span>
-                  <span className="font-mono text-[10px] text-muted-foreground block">NestJS + TypeORM</span>
+                  <span className="font-mono font-bold text-xs text-primary block mt-0.5">{t("experience.telemetry.modules", "15+ Modules")}</span>
+                  <span className="font-mono text-[10px] text-muted-foreground block">{t("experience.telemetry.modulesSub", "NestJS + TypeORM")}</span>
                 </div>
 
                 <div className="p-2.5 bg-surface-container/80 border border-border clip-chamfer">
                   <span className="font-mono text-[10px] text-muted-foreground uppercase flex items-center gap-1">
-                    <Cpu className="size-3 text-secondary-foreground" /> OPTIMIZER
+                    <Cpu className="size-3 text-secondary-foreground" /> {t("experience.telemetry.optimizer", "OPTIMIZER")}
                   </span>
-                  <span className="font-mono font-bold text-xs text-secondary-foreground block mt-0.5">Bin-Packing</span>
-                  <span className="font-mono text-[10px] text-muted-foreground block">Scrap Reduction</span>
+                  <span className="font-mono font-bold text-xs text-secondary-foreground block mt-0.5">{t("experience.telemetry.binPacking", "Bin-Packing")}</span>
+                  <span className="font-mono text-[10px] text-muted-foreground block">{t("experience.telemetry.binPackingSub", "Scrap Reduction")}</span>
                 </div>
 
                 <div className="p-2.5 bg-surface-container/80 border border-border clip-chamfer">
                   <span className="font-mono text-[10px] text-muted-foreground uppercase flex items-center gap-1">
-                    <Database className="size-3 text-primary" /> DATABASE
+                    <Database className="size-3 text-primary" /> {t("experience.telemetry.database", "DATABASE")}
                   </span>
-                  <span className="font-mono font-bold text-xs text-primary block mt-0.5">PostgreSQL</span>
-                  <span className="font-mono text-[10px] text-muted-foreground block">Docker + Caddy</span>
+                  <span className="font-mono font-bold text-xs text-primary block mt-0.5">{t("experience.telemetry.dbEngine", "PostgreSQL")}</span>
+                  <span className="font-mono text-[10px] text-muted-foreground block">{t("experience.telemetry.dbSub", "Docker + Caddy")}</span>
                 </div>
 
                 <div className="p-2.5 bg-surface-container/80 border border-border clip-chamfer">
                   <span className="font-mono text-[10px] text-muted-foreground uppercase flex items-center gap-1">
-                    <Activity className="size-3 text-secondary-foreground" /> COVERAGE
+                    <Activity className="size-3 text-secondary-foreground" /> {t("experience.telemetry.coverage", "COVERAGE")}
                   </span>
-                  <span className="font-mono font-bold text-xs text-secondary-foreground block mt-0.5">4 Systems</span>
-                  <span className="font-mono text-[10px] text-muted-foreground block">PS & Sonata</span>
+                  <span className="font-mono font-bold text-xs text-secondary-foreground block mt-0.5">{t("experience.telemetry.systems", "4 Systems")}</span>
+                  <span className="font-mono text-[10px] text-muted-foreground block">{t("experience.telemetry.systemsSub", "PS & Sonata")}</span>
                 </div>
               </div>
             </div>
@@ -153,8 +159,8 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                   <ZoomableImage
                     src={bcDashboard}
                     alt="Blue Coast OS Production Dashboard Overview"
-                    caption="BLUE COAST OS // PRODUCTION RUNTIME DASHBOARD OVERVIEW"
-                    badgeLabel="SYSTEM OVERVIEW"
+                    caption={t("experience.previewCaption", "BLUE COAST OS // PRODUCTION RUNTIME DASHBOARD OVERVIEW")}
+                    badgeLabel={t("experience.previewBadge", "SYSTEM OVERVIEW")}
                     className="w-full h-full object-cover object-top"
                     wrapperClassName="w-full h-full"
                   />
@@ -162,11 +168,11 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
                 <div className="p-2.5 bg-surface-container-lowest/90 border-t border-border flex items-center justify-between text-xs font-mono text-muted-foreground">
                   <span className="text-primary font-bold text-[11px] flex items-center gap-1.5">
                     <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-                    BLUE COAST OS // EXECUTIVE DASHBOARD
+                    {t("experience.previewFooter", "BLUE COAST OS // EXECUTIVE DASHBOARD")}
                   </span>
                   <span className="text-[10px] text-muted-foreground flex items-center gap-1">
                     <Maximize2 className="size-3 text-secondary-foreground" />
-                    CLICK TO EXPAND
+                    {t("experience.expandHint", "CLICK TO EXPAND")}
                   </span>
                 </div>
               </Card>
@@ -179,59 +185,26 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
           <div className="space-y-3">
             <span className="font-mono text-xs text-secondary-foreground uppercase font-bold tracking-wider flex items-center gap-2">
               <FileText className="size-3.5 text-secondary-foreground" />
-              // ARCHITECTURAL ACHIEVEMENTS & DOMAIN HIGHLIGHTS
+              {t("experience.highlightsTitle", "// ARCHITECTURAL ACHIEVEMENTS & DOMAIN HIGHLIGHTS")}
             </span>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 pt-1">
               {/* Column 1 */}
-              <ul className="text-muted-foreground font-body-sm space-y-3 list-disc pl-5 marker:text-secondary-foreground">
-                <li>
-                  Architected a modular NestJS backend with 15+ domain modules including compounds, buildings,
-                  floors, apartments, windows, cut plans, glass batches, accessories, pricing, invoices, reports,
-                  weights, PDFs, images, and system configuration.
-                </li>
-                <li>
-                  Engineered a builder-pattern window calculation engine supporting 4 aluminum profile systems (PS
-                  9600, PS 6600, PS 4800, Sonata 45) with configurable sub-types and options.
-                </li>
-                <li>
-                  Developed a Best Decreasing Fit bin-packing algorithm for generating optimized aluminum cut plans that
-                  minimize material waste, factoring in blade kerf and 45-degree cutting angle adjustments.
-                </li>
-                <li>
-                  Built a pricing engine that computes per-square-meter window pricing by aggregating aluminum weight,
-                  glass area, and accessories costs with configurable waste percentages, plus fabrication,
-                  installation, transportation, and profit margin calculations.
-                </li>
-                <li>
-                  Designed an invoicing module with automatic total calculation from window specifications via
-                  integration with the pricing engine, supporting invoice lifecycle management.
-                </li>
+              <ul className="text-muted-foreground font-body-sm space-y-3 list-disc ps-5 marker:text-secondary-foreground">
+                {col1.map((item, idx) => (
+                  <li key={idx} className="leading-relaxed">
+                    {item}
+                  </li>
+                ))}
               </ul>
 
               {/* Column 2 */}
-              <ul className="text-muted-foreground font-body-sm space-y-3 list-disc pl-5 marker:text-primary">
-                <li>
-                  Created a 3-tier reporting system (system-wide, compound-level, building-level) with aggregated
-                  analytics for material consumption, profile usage efficiency, accessory usage, unit counts, and
-                  financial summaries.
-                </li>
-                <li>
-                  Generated Arabic RTL PDF reports using pdfmake with Cairo font support, exporting window
-                  measurement tables grouped by profile system.
-                </li>
-                <li>
-                  Implemented JWT-based authentication with access and refresh token rotation, bcrypt password hashing,
-                  and role-based authorization (RBAC) enforced globally via NestJS guards.
-                </li>
-                <li>
-                  Managed database schema evolution with TypeORM migrations and seeded reference data for accessories
-                  and profile weights via dedicated seed scripts.
-                </li>
-                <li>
-                  Containerized the full production stack (NestJS backend, PostgreSQL database, Caddy reverse proxy)
-                  using Docker Compose for both development and production environments.
-                </li>
+              <ul className="text-muted-foreground font-body-sm space-y-3 list-disc ps-5 marker:text-primary">
+                {col2.map((item, idx) => (
+                  <li key={idx} className="leading-relaxed">
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -241,7 +214,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-secondary-foreground rounded-full animate-pulse shrink-0"></span>
               <span className="font-mono text-xs text-muted-foreground">
-                ARCHITECTURAL CASE STUDY & 6 INTERACTIVE SYSTEM SCREENS READY
+                {t("experience.caseStudySub", "IN-DEPTH ARCHITECTURE, CUT PLAN ALGORITHM & PRODUCTION SCREENSHOTS")}
               </span>
             </div>
 
@@ -250,7 +223,7 @@ export const ExperienceSection: React.FC<ExperienceSectionProps> = ({
               onClick={onNavigateToSubpage}
               className="w-full sm:w-auto font-space font-bold text-xs uppercase tracking-wider clip-chamfer gap-2 h-9 px-4 cursor-pointer shadow-md hover:shadow-primary/20 text-center justify-center shrink-0"
             >
-              [ VIEW FULL BLUE COAST ERP CASE STUDY → ]
+              {t("experience.caseStudyButton", "[ EXPLORE FULL BLUE COAST ERP CASE STUDY ]")}
             </Button>
           </div>
         </CardContent>

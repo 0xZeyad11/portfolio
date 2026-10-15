@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PROFILE_INFO } from "@/constants/profile";
 import { useClipboard } from "@/hooks/useClipboard";
+import { useLanguage } from "@/context/LanguageContext";
 import {
   Mail,
   Laptop,
@@ -30,6 +31,7 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
   onOpenChange,
   defaultSubject = "Inquiry via Portfolio // Zeyad Hesham",
 }) => {
+  const { t } = useLanguage();
   const { hasCopied, copy } = useClipboard();
   const email = PROFILE_INFO.email;
 
@@ -39,9 +41,9 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
   const emailClients = [
     {
       id: "desktop",
-      title: "Default Desktop Client",
-      subtitle: "Opens installed PC mail app (Windows Mail, Outlook, Thunderbird, etc.)",
-      badge: "SYSTEM // mailto",
+      title: t("emailModal.desktopTitle", "Default Desktop Client"),
+      subtitle: t("emailModal.desktopSub", "Opens installed PC mail app (Windows Mail, Outlook, Thunderbird, etc.)"),
+      badge: t("emailModal.desktopBadge", "SYSTEM // mailto"),
       badgeVariant: "default" as const,
       icon: <Laptop className="size-5 text-primary shrink-0" />,
       href: `mailto:${email}?subject=${encodedSubject}`,
@@ -49,9 +51,9 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
     },
     {
       id: "gmail",
-      title: "Google Gmail",
-      subtitle: "Compose directly in Gmail in your web browser",
-      badge: "WEB CLIENT",
+      title: t("emailModal.gmailTitle", "Google Gmail"),
+      subtitle: t("emailModal.gmailSub", "Compose directly in Gmail in your web browser"),
+      badge: t("emailModal.gmailBadge", "WEB CLIENT"),
       badgeVariant: "destructive" as const,
       icon: (
         <svg viewBox="0 0 24 24" className="size-5 text-[#EA4335] shrink-0 fill-current">
@@ -63,9 +65,9 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
     },
     {
       id: "outlook-personal",
-      title: "Outlook / Hotmail (Personal)",
-      subtitle: "Compose in Microsoft Outlook Live webmail",
-      badge: "PERSONAL",
+      title: t("emailModal.outlookPersonalTitle", "Outlook / Hotmail (Personal)"),
+      subtitle: t("emailModal.outlookPersonalSub", "Compose in Microsoft Outlook Live webmail"),
+      badge: t("emailModal.outlookPersonalBadge", "PERSONAL"),
       badgeVariant: "secondary" as const,
       icon: (
         <svg viewBox="0 0 24 24" className="size-5 text-[#0078D4] shrink-0 fill-current">
@@ -77,9 +79,9 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
     },
     {
       id: "outlook-office",
-      title: "Microsoft 365 / Office (Work/School)",
-      subtitle: "Compose in Office 365 organization webmail",
-      badge: "OFFICE 365",
+      title: t("emailModal.outlookOfficeTitle", "Microsoft 365 / Office (Work/School)"),
+      subtitle: t("emailModal.outlookOfficeSub", "Compose in Office 365 organization webmail"),
+      badge: t("emailModal.outlookOfficeBadge", "OFFICE 365"),
       badgeVariant: "outline" as const,
       icon: (
         <svg viewBox="0 0 24 24" className="size-5 text-[#00A4EF] shrink-0 fill-current">
@@ -91,9 +93,9 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
     },
     {
       id: "yahoo",
-      title: "Yahoo Mail",
-      subtitle: "Compose directly in Yahoo Mail in your web browser",
-      badge: "WEB CLIENT",
+      title: t("emailModal.yahooTitle", "Yahoo Mail"),
+      subtitle: t("emailModal.yahooSub", "Compose directly in Yahoo Mail in your web browser"),
+      badge: t("emailModal.yahooBadge", "WEB CLIENT"),
       badgeVariant: "outline" as const,
       icon: (
         <svg viewBox="0 0 24 24" className="size-5 text-[#6001D2] shrink-0 fill-current">
@@ -127,21 +129,21 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
               variant="default"
               className="font-space text-[10px] font-bold uppercase py-0.5 px-2 bg-primary text-primary-foreground shadow-sm"
             >
-              <Send className="size-3 mr-1 inline" />
-              COMMS_CHANNEL // DIRECT DISPATCH
+              <Send className="size-3 me-1 inline" />
+              {t("emailModal.badge", "COMMS_CHANNEL // DIRECT DISPATCH")}
             </Badge>
             <span className="font-mono text-[10px] text-muted-foreground uppercase hidden sm:inline">
-              ENCRYPTED_PORT: 587
+              {t("emailModal.port", "ENCRYPTED_PORT: 587")}
             </span>
           </div>
 
           <DialogTitle className="font-headline-lg text-lg sm:text-xl font-bold uppercase tracking-tight text-primary drop-shadow-[0_0_8px_rgba(252,238,10,0.25)] flex items-center gap-2">
-            CHOOSE EMAIL CLIENT
+            {t("emailModal.title", "CHOOSE EMAIL CLIENT")}
           </DialogTitle>
 
           <DialogDescription className="font-mono text-xs text-muted-foreground">
-            Select your preferred desktop or web client on this PC to message{" "}
-            <span className="text-secondary-foreground font-bold">{PROFILE_INFO.name}</span>.
+            {t("emailModal.description", "Select your preferred desktop or web client on this PC to message")}{" "}
+            <span className="text-secondary-foreground font-bold">{t("overview.name", PROFILE_INFO.name)}</span>.
           </DialogDescription>
         </DialogHeader>
 
@@ -149,9 +151,9 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
         <div className="p-3 bg-surface-container-lowest border border-border clip-chamfer flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
           <div className="space-y-0.5 min-w-0">
             <span className="font-mono text-[10px] text-muted-foreground uppercase flex items-center gap-1.5">
-              <Mail className="size-3 text-primary" /> TARGET RECIPIENT
+              <Mail className="size-3 text-primary" /> {t("emailModal.target", "TARGET RECIPIENT")}
             </span>
-            <p className="font-mono text-xs sm:text-sm font-bold text-foreground truncate selection:bg-primary selection:text-primary-foreground">
+            <p className="font-mono text-xs sm:text-sm font-bold text-foreground truncate selection:bg-primary selection:text-primary-foreground dir-ltr">
               {email}
             </p>
           </div>
@@ -169,12 +171,12 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
             {hasCopied ? (
               <>
                 <CheckCircle2 className="size-3.5" />
-                <span>COPIED!</span>
+                <span>{t("emailModal.copied", "COPIED!")}</span>
               </>
             ) : (
               <>
                 <Copy className="size-3.5" />
-                <span>COPY ADDRESS</span>
+                <span>{t("emailModal.copyButton", "COPY ADDRESS")}</span>
               </>
             )}
           </Button>
@@ -183,7 +185,7 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
         {/* Client Selection Options */}
         <div className="space-y-2 pt-1">
           <span className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest block px-1">
-            AVAILABLE CLIENTS & PLATFORMS:
+            {t("emailModal.availableClients", "AVAILABLE CLIENTS & PLATFORMS:")}
           </span>
 
           <div className="grid grid-cols-1 gap-2">
@@ -194,7 +196,7 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
                 target={client.target}
                 rel="noopener noreferrer"
                 onClick={() => handleLinkClick(client.target)}
-                className="group relative flex items-center justify-between p-3 sm:p-3.5 bg-surface-container-low/70 hover:bg-surface-container-lowest border border-border hover:border-primary/80 clip-chamfer transition-all duration-200 text-left cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(252,238,10,0.12)] no-underline"
+                className="group relative flex items-center justify-between p-3 sm:p-3.5 bg-surface-container-low/70 hover:bg-surface-container-lowest border border-border hover:border-primary/80 clip-chamfer transition-all duration-200 text-start cursor-pointer shadow-sm hover:shadow-[0_0_15px_rgba(252,238,10,0.12)] no-underline"
               >
                 <div className="flex items-center gap-3 min-w-0">
                   <div className="p-2 bg-surface-container border border-border group-hover:border-primary/50 transition-colors shrink-0">
@@ -218,7 +220,7 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
                   </div>
                 </div>
 
-                <ExternalLink className="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0 ml-2" />
+                <ExternalLink className="size-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 rtl:group-hover:-translate-x-0.5 rtl:rotate-180 transition-all shrink-0 ms-2" />
               </a>
             ))}
           </div>
@@ -228,10 +230,10 @@ export const EmailChooserDialog: React.FC<EmailChooserDialogProps> = ({
         <div className="pt-2 border-t border-border/60 flex items-center justify-between text-muted-foreground font-mono text-[10px]">
           <span className="flex items-center gap-1.5">
             <span className="size-1.5 rounded-full bg-secondary-foreground animate-ping" />
-            DISPATCH PROTOCOL ACTIVE
+            {t("emailModal.status", "DISPATCH PROTOCOL ACTIVE")}
           </span>
           <span className="hidden sm:inline">
-            [ ESC OR CLICK OUTSIDE TO CANCEL ]
+            {t("emailModal.escHint", "[ ESC OR CLICK OUTSIDE TO CANCEL ]")}
           </span>
         </div>
       </DialogContent>

@@ -1,5 +1,6 @@
 import React from "react";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { EmailModalProvider } from "@/context/EmailModalContext";
 import { GlitchOverlay } from "@/components/common/GlitchOverlay";
 import { CyberCursor } from "@/components/common/CyberCursor";
@@ -15,9 +16,10 @@ export const App: React.FC = () => {
   const { activeSection, isTransitioning, navigateToSection } = useNavigation("overview");
 
   return (
-    <TooltipProvider delayDuration={150}>
-      <EmailModalProvider>
-        <CyberCursor />
+    <LanguageProvider>
+      <TooltipProvider delayDuration={150}>
+        <EmailModalProvider>
+          <CyberCursor />
       {currentRoute === "blue-coast" ? (
         <BlueCoastDetails onBack={() => navigateTo("home", "experience")} />
       ) : currentRoute === "cv" ? (
@@ -32,8 +34,9 @@ export const App: React.FC = () => {
           />
         </div>
       )}
-      </EmailModalProvider>
-    </TooltipProvider>
+        </EmailModalProvider>
+      </TooltipProvider>
+    </LanguageProvider>
   );
 };
 

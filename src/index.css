@@ -294,3 +294,26 @@ input[type="text"], input[type="search"], textarea {
     cursor: auto !important;
   }
 }
+
+/* RTL & Arabic Localization Styles */
+[dir="rtl"], html[dir="rtl"] body {
+  font-family: "Cairo", system-ui, -apple-system, sans-serif;
+}
+
+[dir="rtl"] .font-space,
+[dir="rtl"] .font-display,
+[dir="rtl"] .font-headline-lg,
+[dir="rtl"] .font-headline-md,
+[dir="rtl"] .font-headline-sm,
+[dir="rtl"] .font-title-lg,
+[dir="rtl"] .font-title-md,
+[dir="rtl"] .font-body-lg,
+[dir="rtl"] .font-body-md {
+  font-family: "Cairo", system-ui, sans-serif;
+  letter-spacing: normal;
+}
+
+[dir="rtl"] code,
+[dir="rtl"] .font-mono {
+  font-family: "JetBrains Mono", "Cairo", monospace;
+}

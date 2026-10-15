@@ -22,10 +22,12 @@ import { GithubIcon, LinkedinIcon } from "@/components/common/Icons";
 import { PROFILE_INFO } from "@/constants/profile";
 import { useClipboard } from "@/hooks/useClipboard";
 import { useEmailModal } from "@/context/EmailModalContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 export const OverviewSection: React.FC = () => {
   const { hasCopied, copy } = useClipboard();
   const { openEmailModal } = useEmailModal();
+  const { t } = useLanguage();
 
   return (
     <section id="overview" className="scroll-mt-28 w-full mb-space-xl">
@@ -37,11 +39,13 @@ export const OverviewSection: React.FC = () => {
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-secondary-foreground inline-block shrink-0"></span>
                 <span className="font-label-sm sm:font-label-md font-bold uppercase tracking-wider text-secondary-foreground">
-                  SPEC_SHEET // {PROFILE_INFO.systemRole}
+                  {t("overview.specSheet", `SPEC_SHEET // ${PROFILE_INFO.systemRole}`)}
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-label-sm text-muted-foreground font-mono text-[11px] sm:text-xs">CONTACT:</span>
+                <span className="font-label-sm text-muted-foreground font-mono text-[11px] sm:text-xs">
+                  {t("overview.contactLabel", "CONTACT:")}
+                </span>
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <Button
@@ -112,19 +116,19 @@ export const OverviewSection: React.FC = () => {
               <div className="flex-1 flex flex-col justify-start w-full">
                 <div className="flex flex-wrap items-center gap-2.5 mb-1.5">
                   <CardTitle className="font-headline-lg text-2xl sm:text-3xl lg:text-4xl uppercase font-bold tracking-tight text-primary drop-shadow-[0_0_12px_rgba(252,238,10,0.25)]">
-                    {PROFILE_INFO.name}
+                    {t("overview.name", PROFILE_INFO.name)}
                   </CardTitle>
                   <Badge
                     variant="outline"
                     className="font-space text-xs text-foreground font-bold border-border uppercase"
                   >
-                    BASE: {PROFILE_INFO.baseOfOperations}
+                    {t("status.base", `BASE: ${PROFILE_INFO.baseOfOperations}`)}
                   </Badge>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 mb-4">
                   <span className="font-title-md text-sm sm:text-base text-secondary-foreground font-mono font-bold">
-                    {PROFILE_INFO.role} //
+                    {t("overview.role", PROFILE_INFO.role)} //
                   </span>
                   <div className="flex flex-wrap items-center gap-1.5">
                     <Badge variant="default" className="font-space font-bold text-xs gap-1.5 py-0.5 px-2.5">
@@ -161,7 +165,7 @@ export const OverviewSection: React.FC = () => {
                 </div>
 
                 <p className="font-body-lg text-body-md sm:text-body-lg text-muted-foreground leading-relaxed">
-                  {PROFILE_INFO.bio}
+                  {t("overview.bio", PROFILE_INFO.bio)}
                 </p>
               </div>
             </div>
@@ -182,7 +186,7 @@ export const OverviewSection: React.FC = () => {
           >
             <a href={PROFILE_INFO.linkedinUrl} target="_blank" rel="noreferrer">
               <LinkedinIcon className="size-4" />
-              [ JACK IN // LINKEDIN ]
+              {t("overview.buttons.linkedin", "[ JACK IN // LINKEDIN ]")}
             </a>
           </Button>
 
@@ -193,7 +197,7 @@ export const OverviewSection: React.FC = () => {
           >
             <a href={PROFILE_INFO.githubUrl} target="_blank" rel="noreferrer">
               <GithubIcon className="size-4" />
-              [ FETCH // GITHUB ]
+              {t("overview.buttons.github", "[ FETCH // GITHUB ]")}
             </a>
           </Button>
 
@@ -203,7 +207,7 @@ export const OverviewSection: React.FC = () => {
             className="w-full lg:w-auto font-space uppercase font-bold tracking-wider clip-chamfer h-10 px-4 gap-2 cursor-pointer justify-center"
           >
             <Mail className="size-4" />
-            [ PING // EMAIL ]
+            {t("overview.buttons.email", "[ PING // EMAIL ]")}
           </Button>
 
           <Button
@@ -213,7 +217,7 @@ export const OverviewSection: React.FC = () => {
           >
             <a href="#/cv">
               <FileText className="size-4" />
-              [ VIEW // CV ]
+              {t("overview.buttons.cv", "[ VIEW // CV ]")}
             </a>
           </Button>
         </CardFooter>

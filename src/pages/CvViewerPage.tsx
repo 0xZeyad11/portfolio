@@ -10,9 +10,11 @@ import {
   ShieldCheck,
   FileText,
   Printer,
+  Languages,
 } from "lucide-react";
 import { PROFILE_INFO, cvUrl } from "@/constants/profile";
 import { useEmailModal } from "@/context/EmailModalContext";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface CvViewerPageProps {
   onBack: () => void;
@@ -20,6 +22,8 @@ interface CvViewerPageProps {
 
 export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
   const { openEmailModal } = useEmailModal();
+  const { t, language, toggleLanguage } = useLanguage();
+
   React.useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
@@ -43,31 +47,43 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
             onClick={onBack}
             className="group font-space text-xs uppercase font-bold tracking-wider border-border hover:border-primary text-foreground hover:text-primary clip-chamfer gap-2 h-9 px-3 sm:px-3.5 cursor-pointer shrink-0"
           >
-            <ArrowLeft className="size-4 group-hover:-translate-x-1 transition-transform duration-200" />
-            <span className="hidden sm:inline">[ RETURN TO PORTFOLIO ]</span>
-            <span className="sm:hidden">[ RETURN ]</span>
+            <ArrowLeft className="size-4 group-hover:-translate-x-1 rtl:group-hover:translate-x-1 rtl:rotate-180 transition-transform duration-200" />
+            <span className="hidden sm:inline">{t("cvViewer.back", "[ RETURN TO PORTFOLIO ]")}</span>
+            <span className="sm:hidden">{t("cvViewer.back", "[ RETURN ]")}</span>
           </Button>
 
           <div className="hidden md:flex items-center gap-2">
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
             <span className="font-mono text-xs text-muted-foreground uppercase tracking-widest">
-              OPERATIVE DOSSIER // RESUME VIEWER
+              {t("cvViewer.badge", "OPERATIVE DOSSIER // RESUME VIEWER")}
             </span>
             <Badge variant="outline" className="font-space font-bold text-[10px] uppercase border-primary/50 text-primary gap-1">
               <ShieldCheck className="size-3" />
-              AUTHENTICATED
+              {t("cvViewer.ready", "AUTHENTICATED")}
             </Badge>
           </div>
 
           <div className="flex items-center gap-2 shrink-0">
+            {/* Language Switcher */}
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={toggleLanguage}
+              className="font-mono text-xs font-bold uppercase tracking-wider border-border hover:border-primary text-primary clip-chamfer gap-1.5 h-9 px-2.5 sm:px-3 cursor-pointer"
+              title="Switch Language / تغيير اللغة"
+            >
+              <Languages className="size-3.5 text-primary" />
+              <span>{language === "en" ? "عربي" : "EN"}</span>
+            </Button>
+
             <Button
               variant="outline"
               asChild
               className="hidden sm:inline-flex font-space text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-3.5 gap-2 border-border hover:border-secondary text-foreground hover:text-secondary cursor-pointer"
             >
               <a href={cvUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="size-3.5" />
-                <span>NEW TAB</span>
+                <ExternalLink className="size-3.5 rtl:rotate-180" />
+                <span>{t("cvViewer.openRaw", "NEW TAB")}</span>
               </a>
             </Button>
 
@@ -77,7 +93,7 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
               className="hidden lg:inline-flex font-space text-xs uppercase font-bold tracking-wider clip-chamfer h-9 px-3.5 gap-2 border-border hover:border-primary text-foreground hover:text-primary cursor-pointer"
             >
               <Printer className="size-3.5" />
-              <span>PRINT</span>
+              <span>{t("cvViewer.print", "PRINT")}</span>
             </Button>
 
             <Button
@@ -87,7 +103,7 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
             >
               <a href={cvUrl} download={PROFILE_INFO.cvFileName}>
                 <FileDown className="size-4" />
-                <span className="hidden sm:inline">[ DOWNLOAD PDF ]</span>
+                <span className="hidden sm:inline">{t("cvViewer.downloadFile", "[ DOWNLOAD PDF ]")}</span>
                 <span className="sm:hidden">[ PDF ]</span>
               </a>
             </Button>
@@ -110,7 +126,7 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
                 <span className="text-muted-foreground font-normal">PDF DOCUMENT</span>
               </div>
               <div className="font-mono text-[11px] text-muted-foreground">
-                SUBJECT: {PROFILE_INFO.name} // {PROFILE_INFO.role.toUpperCase()}
+                SUBJECT: {t("overview.name", PROFILE_INFO.name)} // {t("overview.role", PROFILE_INFO.role).toUpperCase()}
               </div>
             </div>
           </div>
@@ -122,7 +138,7 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
               className="font-space text-xs uppercase font-bold tracking-wider clip-chamfer h-8 px-3 gap-1.5 cursor-pointer"
             >
               <Mail className="size-3.5" />
-              <span>CONTACT ZEYAD</span>
+              <span>{t("cvViewer.contactZeyad", "CONTACT ZEYAD")}</span>
             </Button>
 
             <Button
@@ -132,7 +148,7 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
             >
               <a href={cvUrl} download={PROFILE_INFO.cvFileName}>
                 <FileDown className="size-3.5" />
-                <span>DOWNLOAD FILE</span>
+                <span>{t("cvViewer.downloadFile", "DOWNLOAD FILE")}</span>
               </a>
             </Button>
           </div>
@@ -143,10 +159,10 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
           <div className="bg-surface-container-highest/80 border-b border-border px-4 py-2 flex items-center justify-between">
             <div className="flex items-center gap-2 font-mono text-[11px] text-muted-foreground">
               <span className="w-1.5 h-1.5 bg-secondary rounded-full"></span>
-              <span>STREAM: EMBEDDED_DOCUMENT_VIEWPORT</span>
+              <span>{t("cvViewer.liveDossier", "STREAM: EMBEDDED_DOCUMENT_VIEWPORT")}</span>
             </div>
             <div className="font-mono text-[10px] text-muted-foreground uppercase">
-              STATUS: LIVE_PREVIEW
+              {t("cvViewer.status", "STATUS: LIVE_PREVIEW")}
             </div>
           </div>
           <CardContent className="p-0">
@@ -160,9 +176,10 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
         </Card>
 
         {/* Mobile / Fallback Notice */}
-        <div className="p-4 border border-dashed border-border/80 bg-surface-container/30 clip-chamfer flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+        <div className="p-4 border border-dashed border-border/80 bg-surface-container/30 clip-chamfer flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-start">
           <div className="font-mono text-xs text-muted-foreground">
-            <span className="text-secondary font-bold">INFO //</span> If your browser restricts inline PDF rendering on mobile devices, use the buttons above to view in a new tab or download directly.
+            <span className="text-secondary font-bold">INFO //</span>{" "}
+            {t("cvViewer.fallbackNotice", "If your browser restricts inline PDF rendering on mobile devices, use the buttons above to view in a new tab or download directly.")}
           </div>
           <div className="flex items-center gap-2 shrink-0">
             <Button
@@ -171,8 +188,8 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
               className="font-space text-xs uppercase font-bold clip-chamfer h-8 px-3 gap-1.5 cursor-pointer"
             >
               <a href={cvUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="size-3" />
-                OPEN IN NEW TAB
+                <ExternalLink className="size-3 rtl:rotate-180" />
+                {t("cvViewer.openNewTab", "OPEN IN NEW TAB")}
               </a>
             </Button>
             <Button
@@ -182,7 +199,7 @@ export const CvViewerPage: React.FC<CvViewerPageProps> = ({ onBack }) => {
             >
               <a href={cvUrl} download={PROFILE_INFO.cvFileName}>
                 <FileDown className="size-3" />
-                DOWNLOAD
+                {t("cvViewer.downloadFile", "DOWNLOAD")}
               </a>
             </Button>
           </div>
