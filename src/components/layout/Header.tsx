@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import type { SectionId } from "@/types/portfolio";
 import { useEmailModal } from "@/context/EmailModalContext";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTelemetry } from "@/hooks/useTelemetry";
+import { Logo } from "@/components/common/Logo";
 
 interface HeaderProps {
   activeSection: SectionId;
@@ -21,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate }) => 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const { openEmailModal } = useEmailModal();
   const { language, toggleLanguage, t } = useLanguage();
+  const { cpu, ram, lat, cpuBars, ramBars } = useTelemetry();
 
   useEffect(() => {
     const updateTime = () => {
@@ -58,27 +61,40 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate }) => 
       <div className="h-16 sm:h-20 w-full px-4 sm:px-6 md:px-margin-tablet lg:px-margin-desktop flex items-center justify-between gap-3 sm:gap-space-md">
         {/* Left: Operative Identity */}
         <div className="flex items-center gap-space-md shrink-0">
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="font-headline-sm text-base sm:text-headline-sm uppercase font-bold tracking-tight text-primary">
-                {t("overview.name", PROFILE_INFO.name)}
-              </span>
-              <Badge
-                variant="destructive"
-                className="font-space font-bold tracking-wider text-[10px] sm:text-xs md:text-sm px-2 sm:px-3 py-0.5 sm:py-1 h-auto uppercase"
-              >
-                {t("overview.role", "SOFTWARE-ENGINEER").toUpperCase()}
-              </Badge>
+          <a
+            href="#overview"
+            onClick={(e) => {
+              e.preventDefault();
+              onNavigate("overview");
+            }}
+            className="group flex items-center gap-2.5 sm:gap-3 cursor-pointer select-none"
+            title={`${PROFILE_INFO.name} // Home`}
+          >
+            {/* Cyberpunk ZH Monogram Logo */}
+            <Logo size="md" className="shrink-0 group-hover:scale-105 transition-transform duration-300" />
+
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2">
+                <span className="font-headline-sm text-base sm:text-headline-sm uppercase font-bold tracking-tight text-primary group-hover:text-primary transition-colors">
+                  {t("overview.name", PROFILE_INFO.name)}
+                </span>
+                <Badge
+                  variant="destructive"
+                  className="font-space font-bold tracking-wider text-[10px] sm:text-xs md:text-sm px-2 sm:px-3 py-0.5 sm:py-1 h-auto uppercase"
+                >
+                  {t("overview.role", "SOFTWARE-ENGINEER").toUpperCase()}
+                </Badge>
+              </div>
+              <div className="flex items-center gap-2 font-mono text-[10px] text-secondary-foreground tracking-widest mt-0.5">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full inline-block animate-ping"></span>
+                  {t("status.openToWork", `STATUS: ${PROFILE_INFO.status}`)}
+                </span>
+                <span className="hidden xl:inline text-border">/</span>
+                <span className="hidden xl:inline text-muted-foreground">{t("status.operative", `OP: ${PROFILE_INFO.operativeId}`)}</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2 font-mono text-[10px] text-secondary-foreground tracking-widest mt-0.5">
-              <span className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full inline-block animate-ping"></span>
-                {t("status.openToWork", `STATUS: ${PROFILE_INFO.status}`)}
-              </span>
-              <span className="hidden xl:inline text-border">/</span>
-              <span className="hidden xl:inline text-muted-foreground">{t("status.operative", `OP: ${PROFILE_INFO.operativeId}`)}</span>
-            </div>
-          </div>
+          </a>
         </div>
 
         {/* Center: Desktop Navigation Tabs */}
@@ -123,13 +139,35 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate }) => 
               {/* CPU */}
               <div className="flex items-center gap-1.5">
                 <span className="text-secondary-foreground font-bold text-[10px] tracking-wider">{t("telemetry.cpu", "CPU")}</span>
-                <div className="flex gap-[2px] items-end h-3">
-                  <div className="w-1.5 h-2 bg-secondary-foreground"></div>
-                  <div className="w-1.5 h-3 bg-secondary-foreground opacity-90 animate-pulse"></div>
-                  <div className="w-1.5 h-1.5 bg-secondary-foreground opacity-40"></div>
-                  <div className="w-1.5 h-3 bg-surface-container-highest"></div>
+                <div className="flex gap-[2px] items-end h-3" title={`CPU Load: ${cpu}%`}>
+                  <div
+                    className="w-1.5 bg-secondary-foreground transition-all duration-500 ease-out"
+                    style={{ height: `${cpuBars[0]}px` }}
+                  />
+                  <div
+                    className="w-1.5 bg-secondary-foreground transition-all duration-500 ease-out"
+                    style={{
+                      height: `${cpuBars[1]}px`,
+                      opacity: cpu > 45 ? 1 : 0.8,
+                    }}
+                  />
+                  <div
+                    className="w-1.5 bg-secondary-foreground transition-all duration-500 ease-out"
+                    style={{
+                      height: `${cpuBars[2]}px`,
+                      opacity: cpu > 35 ? 0.9 : 0.5,
+                    }}
+                  />
+                  <div
+                    className="w-1.5 transition-all duration-500 ease-out"
+                    style={{
+                      height: `${cpuBars[3]}px`,
+                      backgroundColor: cpu > 55 ? "var(--color-secondary-foreground)" : "var(--color-surface-container-highest)",
+                      opacity: cpu > 55 ? 1 : 0.5,
+                    }}
+                  />
                 </div>
-                <span className="text-[10px] text-muted-foreground">42%</span>
+                <span className="text-[10px] text-muted-foreground font-mono tabular-nums min-w-[28px]">{cpu}%</span>
               </div>
 
               <span className="text-surface-container-highest text-xs">/</span>
@@ -137,31 +175,80 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate }) => 
               {/* RAM */}
               <div className="flex items-center gap-1.5">
                 <span className="text-primary font-bold text-[10px] tracking-wider">{t("telemetry.ram", "RAM")}</span>
-                <div className="flex gap-[2px] items-end h-3">
-                  <div className="w-1.5 h-3 bg-primary"></div>
-                  <div className="w-1.5 h-3 bg-primary"></div>
-                  <div className="w-1.5 h-2.5 bg-primary opacity-70 animate-pulse"></div>
-                  <div className="w-1.5 h-3 bg-surface-container-highest"></div>
+                <div className="flex gap-[2px] items-end h-3" title={`RAM Usage: ${ram}GB / 16GB`}>
+                  <div
+                    className="w-1.5 bg-primary transition-all duration-500 ease-out"
+                    style={{ height: `${ramBars[0]}px` }}
+                  />
+                  <div
+                    className="w-1.5 bg-primary transition-all duration-500 ease-out"
+                    style={{ height: `${ramBars[1]}px` }}
+                  />
+                  <div
+                    className="w-1.5 bg-primary transition-all duration-500 ease-out"
+                    style={{
+                      height: `${ramBars[2]}px`,
+                      opacity: 0.9,
+                    }}
+                  />
+                  <div
+                    className="w-1.5 transition-all duration-500 ease-out"
+                    style={{
+                      height: `${ramBars[3]}px`,
+                      backgroundColor: ram > 12.2 ? "var(--color-primary)" : "var(--color-surface-container-highest)",
+                      opacity: ram > 12.2 ? 0.9 : 0.5,
+                    }}
+                  />
                 </div>
-                <span className="text-[10px] text-muted-foreground">12GB</span>
+                <span className="text-[10px] text-muted-foreground font-mono tabular-nums min-w-[38px]">{ram}GB</span>
               </div>
 
               <span className="hidden xl:inline text-surface-container-highest text-xs">/</span>
 
               {/* Latency */}
               <div className="hidden xl:flex items-center gap-1.5">
-                <span className="text-secondary-foreground font-bold text-[10px]">{t("telemetry.lat", "LAT")}:</span>
-                <span className="text-[10px] text-primary">2ms</span>
+                <span className="text-secondary-foreground font-bold text-[10px] flex items-center gap-1">
+                  <span className="relative flex size-1.5">
+                    <span
+                      className={cn(
+                        "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75",
+                        lat <= 3 ? "bg-secondary-foreground" : "bg-primary"
+                      )}
+                    />
+                    <span
+                      className={cn(
+                        "relative inline-flex rounded-full size-1.5",
+                        lat <= 3 ? "bg-secondary-foreground" : "bg-primary"
+                      )}
+                    />
+                  </span>
+                  {t("telemetry.lat", "LAT")}:
+                </span>
+                <span
+                  className={cn(
+                    "text-[10px] font-mono tabular-nums min-w-[24px] transition-colors duration-300",
+                    lat <= 3 ? "text-primary" : "text-amber-400"
+                  )}
+                >
+                  {lat}ms
+                </span>
+                {/* 3 micro signal strength bars */}
+                <div className="flex items-end gap-[1.5px] h-2.5 ml-0.5" title={`Signal Latency: ${lat}ms`}>
+                  <span className="w-1 h-1.5 bg-secondary-foreground transition-opacity" />
+                  <span
+                    className={cn(
+                      "w-1 h-2 transition-all duration-300",
+                      lat <= 4 ? "bg-secondary-foreground" : "bg-surface-container-highest opacity-40"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "w-1 h-2.5 transition-all duration-300",
+                      lat <= 2 ? "bg-secondary-foreground" : "bg-surface-container-highest opacity-40"
+                    )}
+                  />
+                </div>
               </div>
-            </div>
-
-            {/* Equalizer Frequency Signal Bars */}
-            <div className="hidden 2xl:flex items-end gap-0.5 h-3.5 px-1.5 py-0.5 bg-surface-container border border-border/50">
-              <div className="w-1 h-2 bg-secondary-foreground animate-pulse"></div>
-              <div className="w-1 h-3.5 bg-primary animate-pulse [animation-delay:150ms]"></div>
-              <div className="w-1 h-1.5 bg-secondary-foreground animate-pulse [animation-delay:300ms]"></div>
-              <div className="w-1 h-3 bg-primary animate-pulse [animation-delay:450ms]"></div>
-              <div className="w-1 h-2.5 bg-secondary-foreground animate-pulse [animation-delay:200ms]"></div>
             </div>
 
             {/* Live System Clock */}
@@ -260,11 +347,28 @@ export const Header: React.FC<HeaderProps> = ({ activeSection, onNavigate }) => 
           <div className="pt-2 border-t border-border/60 flex items-center justify-between font-mono text-[10px] text-muted-foreground">
             <div className="flex items-center gap-1.5">
               <span className="text-secondary-foreground font-bold">{t("telemetry.sysClk", "SYS_CLK")}:</span>
-              <span className="text-foreground">{timeStr.split(" ")[1] || timeStr}</span>
+              <span className="text-foreground tabular-nums">{timeStr.split(" ")[1] || timeStr}</span>
             </div>
-            <div className="flex items-center gap-2.5">
-              <span className="text-secondary-foreground font-bold">CPU: 42%</span>
-              <span className="text-primary font-bold">RAM: 12GB</span>
+            <div className="flex items-center gap-2">
+              <span className="text-secondary-foreground font-bold tabular-nums">CPU: {cpu}%</span>
+              <span className="text-primary font-bold tabular-nums">RAM: {ram}GB</span>
+              <span className="text-secondary-foreground/90 font-bold tabular-nums flex items-center gap-1">
+                <span className="relative flex size-1.5">
+                  <span
+                    className={cn(
+                      "animate-ping absolute inline-flex h-full w-full rounded-full opacity-75",
+                      lat <= 3 ? "bg-secondary-foreground" : "bg-primary"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "relative inline-flex rounded-full size-1.5",
+                      lat <= 3 ? "bg-secondary-foreground" : "bg-primary"
+                    )}
+                  />
+                </span>
+                LAT: {lat}ms
+              </span>
             </div>
           </div>
         </div>

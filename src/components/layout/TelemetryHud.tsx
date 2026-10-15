@@ -1,6 +1,9 @@
 import React from "react";
+import { useTelemetry } from "@/hooks/useTelemetry";
 
 export const TelemetryHud: React.FC = () => {
+  const { cpu, ram, lat, cpuBars, ramBars } = useTelemetry();
+
   return (
     <section className="w-full flex flex-col gap-space-xs mb-space-lg">
       <div className="flex items-center justify-between flex-wrap gap-space-sm bg-surface-container-low border border-border px-space-md py-space-xs shadow-md">
@@ -14,38 +17,73 @@ export const TelemetryHud: React.FC = () => {
           </span>
         </div>
         <div className="hidden lg:flex items-center gap-space-md font-label-sm text-label-sm text-muted-foreground font-mono">
+          {/* CPU */}
           <div className="flex items-center gap-2">
             <span className="text-secondary-foreground font-bold">CPU</span>
-            <div className="flex gap-[2px]">
-              <div className="w-1.5 h-3 bg-secondary-foreground"></div>
-              <div className="w-1.5 h-3 bg-secondary-foreground opacity-80 animate-pulse"></div>
-              <div className="w-1.5 h-3 bg-secondary-foreground opacity-40"></div>
-              <div className="w-1.5 h-3 bg-surface-container-highest"></div>
-              <div className="w-1.5 h-3 bg-surface-container-highest"></div>
+            <div className="flex gap-[2px] items-end h-3">
+              <div
+                className="w-1.5 bg-secondary-foreground transition-all duration-500 ease-out"
+                style={{ height: `${cpuBars[0]}px` }}
+              />
+              <div
+                className="w-1.5 bg-secondary-foreground transition-all duration-500 ease-out"
+                style={{ height: `${cpuBars[1]}px`, opacity: cpu > 45 ? 1 : 0.8 }}
+              />
+              <div
+                className="w-1.5 bg-secondary-foreground transition-all duration-500 ease-out"
+                style={{ height: `${cpuBars[2]}px`, opacity: cpu > 35 ? 0.9 : 0.5 }}
+              />
+              <div
+                className="w-1.5 transition-all duration-500 ease-out"
+                style={{
+                  height: `${cpuBars[3]}px`,
+                  backgroundColor: cpu > 55 ? "var(--color-secondary-foreground)" : "var(--color-surface-container-highest)",
+                  opacity: cpu > 55 ? 1 : 0.5,
+                }}
+              />
             </div>
-            <span>42%</span>
+            <span className="tabular-nums min-w-[28px]">{cpu}%</span>
           </div>
+
           <span className="text-surface-container-highest">/</span>
+
+          {/* RAM */}
           <div className="flex items-center gap-2">
             <span className="text-primary font-bold">RAM</span>
-            <div className="flex gap-[2px]">
-              <div className="w-1.5 h-3 bg-primary"></div>
-              <div className="w-1.5 h-3 bg-primary"></div>
-              <div className="w-1.5 h-3 bg-primary"></div>
-              <div className="w-1.5 h-3 bg-primary opacity-60 animate-pulse"></div>
-              <div className="w-1.5 h-3 bg-surface-container-highest"></div>
+            <div className="flex gap-[2px] items-end h-3">
+              <div
+                className="w-1.5 bg-primary transition-all duration-500 ease-out"
+                style={{ height: `${ramBars[0]}px` }}
+              />
+              <div
+                className="w-1.5 bg-primary transition-all duration-500 ease-out"
+                style={{ height: `${ramBars[1]}px` }}
+              />
+              <div
+                className="w-1.5 bg-primary transition-all duration-500 ease-out"
+                style={{ height: `${ramBars[2]}px`, opacity: 0.9 }}
+              />
+              <div
+                className="w-1.5 transition-all duration-500 ease-out"
+                style={{
+                  height: `${ramBars[3]}px`,
+                  backgroundColor: ram > 12.2 ? "var(--color-primary)" : "var(--color-surface-container-highest)",
+                  opacity: ram > 12.2 ? 0.9 : 0.5,
+                }}
+              />
             </div>
-            <span>12GB</span>
+            <span className="tabular-nums min-w-[38px]">{ram}GB</span>
           </div>
+
           <span className="text-surface-container-highest">/</span>
+
+          {/* LAT */}
           <div className="flex items-center gap-2">
-            <span className="text-secondary-foreground font-bold">PWR</span>
-            <div className="w-7 h-3 border border-secondary-foreground/50 p-[1px] flex gap-[1px]">
-              <div className="h-full w-full bg-secondary-foreground"></div>
-              <div className="h-full w-full bg-secondary-foreground"></div>
-              <div className="h-full w-full bg-secondary-foreground opacity-80 animate-pulse"></div>
-            </div>
-            <span>94%</span>
+            <span className="text-secondary-foreground font-bold flex items-center gap-1">
+              <span className="size-1.5 rounded-full bg-secondary-foreground animate-ping" />
+              LAT
+            </span>
+            <span className="text-primary tabular-nums min-w-[24px]">{lat}ms</span>
           </div>
         </div>
       </div>
